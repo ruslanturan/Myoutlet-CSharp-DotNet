@@ -1,2 +1,2 @@
-# Myoutlet.ge(.Bet C#)
+# Myoutlet.ge(.Net C#)
 Online Shop
