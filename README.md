@@ -1,3 +1,2 @@
-# Myoutlet.ge-C-
+# Myoutlet.ge(.Bet C#)
 Online Shop
-.Net C#
