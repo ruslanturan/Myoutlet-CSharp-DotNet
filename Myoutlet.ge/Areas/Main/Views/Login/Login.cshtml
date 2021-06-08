@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "შესვლა";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">შესვლა</div>
+            <div class="card-body">
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="ელ-ფოსტა" required="required" autofocus="autofocus">
+                            <label for="email">ელ-ფოსტა</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="password" id="pass" name="pass" class="form-control" placeholder="პაროლი" required="required">
+                            <label for="pass">პაროლი</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p for="">თქვენ შესული ხართ როგორც</p>
+                        <div class="form-label-group d-flex">
+                            <input type="radio" id="pass" class="form-control mt-1 ml-3" name="logged" value="Admin" required="required" style="width:7%">
+                            <p>ადმინ</p>
+                            <input type="radio" id="pass" class="form-control mt-1" name="logged" value="Partner" required="required" style="width:7%;margin-left:35%;">
+                            <p>პარტნიორი</p>
+                        </div>
+                    </div>
+                    @Html.ValidationMessage("LoginError", new { @class = "text-danger" })
+                    <button class="btn btn-primary btn-block" type="submit">შესვლა</button>
+                </form>
+                <div class="text-center">
+                    <a class="d-block small" href="/main/login/forgot_pass">დაგავიწყდათ პაროლი?</a>
+                </div>
+            </div>
+        </div>

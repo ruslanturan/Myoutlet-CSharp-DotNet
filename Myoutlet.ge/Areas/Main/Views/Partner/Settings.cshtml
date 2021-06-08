@@ -1,0 +1,68 @@
+﻿@using Myoutlet.ge.Models
+@model Partner
+@{
+    ViewBag.Title = "პროფილის პარამეტრები";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">პროფილის პარამეტრები</div>
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(m => m.Id)
+                                @Html.HiddenFor(m => m.Pass)
+                                @Html.HiddenFor(m => m.UniqueNum)
+                                @Html.HiddenFor(m => m.Status)
+                                @Html.HiddenFor(m => m.CompanyLogo)
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-label-group">
+                                                @Html.TextBoxFor(m => m.CompanyId, new { type = "number", onkeydown = "javascript: return event.keyCode == 69 ? false : true", required = "required", id = "CompanyId", name = "companyId", @class = "form-control", placeholder = "კომპანიის ID" })
+                                                @Html.LabelFor(m => m.CompanyId, "კომპანიის ID")
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-label-group">
+                                                @Html.TextBoxFor(m => m.CompanyName, new { type = "text", id = "CompanyName", required = "required", name = "companyName", @class = "form-control", placeholder = "კომპანიის სახელი" })
+                                                @Html.LabelFor(m => m.CompanyName, "კომპანიის სახელი")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        @Html.TextBoxFor(m => m.Email, new { type = "email", id = "Email", required = "required", name = "email", @class = "form-control", placeholder = "ელ-ფოსტა" })
+                                        @Html.LabelFor(m => m.Email, "ელ-ფოსტა")
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        @Html.TextBoxFor(m => m.Phone, new { type = "number", onkeydown = "javascript: return event.keyCode == 69 ? false : true", id = "Phone", name = "phone", @class = "form-control", placeholder = "ტელეფონის ნომერი" })
+                                        @Html.LabelFor(m => m.Phone, "ტელეფონის ნომერი")
+                                    </div>
+                                </div>
+                                <div class="form-group ad-img">
+                                    @Html.TextBoxFor(m => m.CompanyLogo, new { type = "file", id = "CompLogo", name = "CompanyLogo" })
+                                    <ul class="img-list">
+                                        <li class="add-img" id="logo">
+                                            <i class="fas fa-camera text-center"></i>
+                                            <p class="text-center mt-3">ლოგოს ატვირთვა</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-success btn-block mt-3" type="submit">შენახვა</button>
+                            </form>
+                            <div class="text-center">
+                                <a class="d-block small mt-3" href="/main/partner/passwordchange/@Model.UniqueNum">პაროლის შეცვლა</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Scroll to Top Button-->
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fas fa-angle-up"></i>
+                </a>
+            </div>

@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Myoutlet.geModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LittleInfo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="MobilePhone" Type="decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Adds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImgName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Linkd" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Barcodes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productId" Type="int" />
+          <Property Name="barcodeId" Type="int" />
+        </EntityType>
+        <EntityType Name="callRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneNum" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="PartnerId" Type="int" />
+        </EntityType>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CommentId" Type="int" />
+          <Property Name="PostDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Descriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Heading" Type="nvarchar" MaxLength="50" />
+          <Property Name="DescName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescValue" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="InSearch" Type="bit" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FbLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Galleries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductUniqueNum" Type="decimal" Precision="9" Scale="0" />
+        </EntityType>
+        <EntityType Name="HotDiscounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InstaLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kinds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="orderHashId" Type="nvarchar(max)" />
+          <Property Name="orderId" Type="nvarchar(max)" />
+          <Property Name="status" Type="bit" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Partners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pass" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="int" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyLogo" Type="nvarchar(max)" />
+          <Property Name="UniqueNum" Type="decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="SaleInPercent" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="ShoppingLink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="KindId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="ProductUniqueNum" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Views" Type="int" />
+          <Property Name="added_date" Type="date" />
+          <Property Name="SaledCost" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="productCount" Type="int" />
+          <Property Name="saleReason" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RecentyAdded">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sub_admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="pass" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ValuablePartners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Partner" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeeklyDiscounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YoutubeLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__callReque__Partn__31B762FC">
+          <End Role="Partners" Type="Self.Partners" Multiplicity="0..1" />
+          <End Role="callRequests" Type="Self.callRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="callRequests">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__callReque__Produ__30C33EC3">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="callRequests" Type="Self.callRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="callRequests">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comments__Produc__2CF2ADDF">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotDiscou__Produ__1CBC4616">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="HotDiscounts" Type="Self.HotDiscounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HotDiscounts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kinds__CategoryI__68487DD7">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Kinds" Type="Self.Kinds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kinds">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Catego__71D1E811">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__KindId__70DDC3D8">
+          <End Role="Kinds" Type="Self.Kinds" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kinds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="KindId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Partne__07C12930">
+          <End Role="Partners" Type="Self.Partners" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__recentyAd__Produ__19DFD96B">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="RecentyAdded" Type="Self.RecentyAdded" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RecentyAdded">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ValuableP__Partn__22751F6C">
+          <End Role="Partners" Type="Self.Partners" Multiplicity="1" />
+          <End Role="ValuablePartners" Type="Self.ValuablePartners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ValuablePartners">
+              <PropertyRef Name="Partner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WeeklyDis__Produ__1F98B2C1">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="WeeklyDiscounts" Type="Self.WeeklyDiscounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WeeklyDiscounts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Descriptions_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Descriptions" Type="Self.Descriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Descriptions">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyoutletgeModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adds" EntityType="Self.Adds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Barcodes" EntityType="Self.Barcodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="callRequests" EntityType="Self.callRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Campaigns" EntityType="Self.Campaigns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Descriptions" EntityType="Self.Descriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FbLink" EntityType="Self.FbLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galleries" EntityType="Self.Galleries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotDiscounts" EntityType="Self.HotDiscounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstaLink" EntityType="Self.InstaLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kinds" EntityType="Self.Kinds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partners" EntityType="Self.Partners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecentyAdded" EntityType="Self.RecentyAdded" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub_admin" EntityType="Self.Sub_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValuablePartners" EntityType="Self.ValuablePartners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeeklyDiscounts" EntityType="Self.WeeklyDiscounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YoutubeLink" EntityType="Self.YoutubeLink" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__callReque__Partn__31B762FC" Association="Self.FK__callReque__Partn__31B762FC">
+            <End Role="Partners" EntitySet="Partners" />
+            <End Role="callRequests" EntitySet="callRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__callReque__Produ__30C33EC3" Association="Self.FK__callReque__Produ__30C33EC3">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="callRequests" EntitySet="callRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comments__Produc__2CF2ADDF" Association="Self.FK__Comments__Produc__2CF2ADDF">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotDiscou__Produ__1CBC4616" Association="Self.FK__HotDiscou__Produ__1CBC4616">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="HotDiscounts" EntitySet="HotDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kinds__CategoryI__68487DD7" Association="Self.FK__Kinds__CategoryI__68487DD7">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Kinds" EntitySet="Kinds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Catego__71D1E811" Association="Self.FK__Products__Catego__71D1E811">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__KindId__70DDC3D8" Association="Self.FK__Products__KindId__70DDC3D8">
+            <End Role="Kinds" EntitySet="Kinds" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Partne__07C12930" Association="Self.FK__Products__Partne__07C12930">
+            <End Role="Partners" EntitySet="Partners" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__recentyAd__Produ__19DFD96B" Association="Self.FK__recentyAd__Produ__19DFD96B">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="RecentyAdded" EntitySet="RecentyAdded" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ValuableP__Partn__22751F6C" Association="Self.FK__ValuableP__Partn__22751F6C">
+            <End Role="Partners" EntitySet="Partners" />
+            <End Role="ValuablePartners" EntitySet="ValuablePartners" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WeeklyDis__Produ__1F98B2C1" Association="Self.FK__WeeklyDis__Produ__1F98B2C1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="WeeklyDiscounts" EntitySet="WeeklyDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Descriptions_Products" Association="Self.FK_Descriptions_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Descriptions" EntitySet="Descriptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Myoutlet.geModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LittleInfo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobilePhone" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Add">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Linkd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Barcode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productId" Type="Int32" />
+          <Property Name="barcodeId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="callRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNum" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="PartnerId" Type="Int32" />
+          <NavigationProperty Name="Partner" Relationship="Self.FK__callReque__Partn__31B762FC" FromRole="callRequests" ToRole="Partners" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__callReque__Produ__30C33EC3" FromRole="callRequests" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kinds" Relationship="Self.FK__Kinds__CategoryI__68487DD7" FromRole="Categories" ToRole="Kinds" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Products__Catego__71D1E811" FromRole="Categories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CommentId" Type="Int32" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Comments__Produc__2CF2ADDF" FromRole="Comments" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Heading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="InSearch" Type="Boolean" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Descriptions_Products" FromRole="Descriptions" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="FbLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductUniqueNum" Type="Decimal" Precision="9" Scale="0" />
+        </EntityType>
+        <EntityType Name="HotDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__HotDiscou__Produ__1CBC4616" FromRole="HotDiscounts" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="InstaLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kind">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Kinds__CategoryI__68487DD7" FromRole="Kinds" ToRole="Categories" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Products__KindId__70DDC3D8" FromRole="Kinds" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="orderHashId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="orderId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UniqueNum" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="callRequests" Relationship="Self.FK__callReque__Partn__31B762FC" FromRole="Partners" ToRole="callRequests" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Products__Partne__07C12930" FromRole="Partners" ToRole="Products" />
+          <NavigationProperty Name="ValuablePartners" Relationship="Self.FK__ValuableP__Partn__22751F6C" FromRole="Partners" ToRole="ValuablePartners" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="SaleInPercent" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="ShoppingLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KindId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="ProductUniqueNum" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Views" Type="Int32" />
+          <Property Name="added_date" Type="DateTime" Precision="0" />
+          <Property Name="SaledCost" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="productCount" Type="Int32" />
+          <Property Name="saleReason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="callRequests" Relationship="Self.FK__callReque__Produ__30C33EC3" FromRole="Products" ToRole="callRequests" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Products__Catego__71D1E811" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__Produc__2CF2ADDF" FromRole="Products" ToRole="Comments" />
+          <NavigationProperty Name="Descriptions" Relationship="Self.FK_Descriptions_Products" FromRole="Products" ToRole="Descriptions" />
+          <NavigationProperty Name="HotDiscounts" Relationship="Self.FK__HotDiscou__Produ__1CBC4616" FromRole="Products" ToRole="HotDiscounts" />
+          <NavigationProperty Name="Kind" Relationship="Self.FK__Products__KindId__70DDC3D8" FromRole="Products" ToRole="Kinds" />
+          <NavigationProperty Name="Partner" Relationship="Self.FK__Products__Partne__07C12930" FromRole="Products" ToRole="Partners" />
+          <NavigationProperty Name="RecentyAddeds" Relationship="Self.FK__recentyAd__Produ__19DFD96B" FromRole="Products" ToRole="RecentyAdded" />
+          <NavigationProperty Name="WeeklyDiscounts" Relationship="Self.FK__WeeklyDis__Produ__1F98B2C1" FromRole="Products" ToRole="WeeklyDiscounts" />
+        </EntityType>
+        <EntityType Name="RecentyAdded">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__recentyAd__Produ__19DFD96B" FromRole="RecentyAdded" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Sub_admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ValuablePartner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Partner" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Partner1" Relationship="Self.FK__ValuableP__Partn__22751F6C" FromRole="ValuablePartners" ToRole="Partners" />
+        </EntityType>
+        <EntityType Name="WeeklyDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__WeeklyDis__Produ__1F98B2C1" FromRole="WeeklyDiscounts" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="YoutubeLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__callReque__Partn__31B762FC">
+          <End Role="Partners" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="callRequests" Type="Self.callRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="callRequests">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__callReque__Produ__30C33EC3">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="callRequests" Type="Self.callRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="callRequests">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kinds__CategoryI__68487DD7">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Kinds" Type="Self.Kind" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kinds">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Catego__71D1E811">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comments__Produc__2CF2ADDF">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Descriptions_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="Descriptions" Type="Self.Description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Descriptions">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotDiscou__Produ__1CBC4616">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="HotDiscounts" Type="Self.HotDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HotDiscounts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__KindId__70DDC3D8">
+          <End Role="Kinds" Type="Self.Kind" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kinds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="KindId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Partne__07C12930">
+          <End Role="Partners" Type="Self.Partner" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ValuableP__Partn__22751F6C">
+          <End Role="Partners" Type="Self.Partner" Multiplicity="1" />
+          <End Role="ValuablePartners" Type="Self.ValuablePartner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ValuablePartners">
+              <PropertyRef Name="Partner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__recentyAd__Produ__19DFD96B">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="RecentyAdded" Type="Self.RecentyAdded" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RecentyAdded">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WeeklyDis__Produ__1F98B2C1">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="WeeklyDiscounts" Type="Self.WeeklyDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WeeklyDiscounts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyoutletEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abouts" EntityType="Self.About" />
+          <EntitySet Name="Adds" EntityType="Self.Add" />
+          <EntitySet Name="Barcodes" EntityType="Self.Barcode" />
+          <EntitySet Name="callRequests" EntityType="Self.callRequest" />
+          <EntitySet Name="Campaigns" EntityType="Self.Campaign" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Descriptions" EntityType="Self.Description" />
+          <EntitySet Name="FbLinks" EntityType="Self.FbLink" />
+          <EntitySet Name="Galleries" EntityType="Self.Gallery" />
+          <EntitySet Name="HotDiscounts" EntityType="Self.HotDiscount" />
+          <EntitySet Name="InstaLinks" EntityType="Self.InstaLink" />
+          <EntitySet Name="Kinds" EntityType="Self.Kind" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="Partners" EntityType="Self.Partner" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="RecentyAddeds" EntityType="Self.RecentyAdded" />
+          <EntitySet Name="Sub_admin" EntityType="Self.Sub_admin" />
+          <EntitySet Name="ValuablePartners" EntityType="Self.ValuablePartner" />
+          <EntitySet Name="WeeklyDiscounts" EntityType="Self.WeeklyDiscount" />
+          <EntitySet Name="YoutubeLinks" EntityType="Self.YoutubeLink" />
+          <AssociationSet Name="FK__callReque__Partn__31B762FC" Association="Self.FK__callReque__Partn__31B762FC">
+            <End Role="Partners" EntitySet="Partners" />
+            <End Role="callRequests" EntitySet="callRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__callReque__Produ__30C33EC3" Association="Self.FK__callReque__Produ__30C33EC3">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="callRequests" EntitySet="callRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kinds__CategoryI__68487DD7" Association="Self.FK__Kinds__CategoryI__68487DD7">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Kinds" EntitySet="Kinds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Catego__71D1E811" Association="Self.FK__Products__Catego__71D1E811">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comments__Produc__2CF2ADDF" Association="Self.FK__Comments__Produc__2CF2ADDF">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Descriptions_Products" Association="Self.FK_Descriptions_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Descriptions" EntitySet="Descriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotDiscou__Produ__1CBC4616" Association="Self.FK__HotDiscou__Produ__1CBC4616">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="HotDiscounts" EntitySet="HotDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__KindId__70DDC3D8" Association="Self.FK__Products__KindId__70DDC3D8">
+            <End Role="Kinds" EntitySet="Kinds" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Partne__07C12930" Association="Self.FK__Products__Partne__07C12930">
+            <End Role="Partners" EntitySet="Partners" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ValuableP__Partn__22751F6C" Association="Self.FK__ValuableP__Partn__22751F6C">
+            <End Role="Partners" EntitySet="Partners" />
+            <End Role="ValuablePartners" EntitySet="ValuablePartners" />
+          </AssociationSet>
+          <AssociationSet Name="FK__recentyAd__Produ__19DFD96B" Association="Self.FK__recentyAd__Produ__19DFD96B">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="RecentyAdded" EntitySet="RecentyAddeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WeeklyDis__Produ__1F98B2C1" Association="Self.FK__WeeklyDis__Produ__1F98B2C1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="WeeklyDiscounts" EntitySet="WeeklyDiscounts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyoutletgeModelStoreContainer" CdmEntityContainer="MyoutletEntities">
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="LittleInfo" ColumnName="LittleInfo" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adds">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Add">
+              <MappingFragment StoreEntitySet="Adds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+                <ScalarProperty Name="Linkd" ColumnName="Linkd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Barcodes">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Barcode">
+              <MappingFragment StoreEntitySet="Barcodes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="barcodeId" ColumnName="barcodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="callRequests">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.callRequest">
+              <MappingFragment StoreEntitySet="callRequests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Campaign">
+              <MappingFragment StoreEntitySet="Campaigns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Descriptions">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Description">
+              <MappingFragment StoreEntitySet="Descriptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="DescName" ColumnName="DescName" />
+                <ScalarProperty Name="DescValue" ColumnName="DescValue" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="InSearch" ColumnName="InSearch" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FbLinks">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.FbLink">
+              <MappingFragment StoreEntitySet="FbLink">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galleries">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Gallery">
+              <MappingFragment StoreEntitySet="Galleries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ProductUniqueNum" ColumnName="ProductUniqueNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotDiscounts">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.HotDiscount">
+              <MappingFragment StoreEntitySet="HotDiscounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstaLinks">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.InstaLink">
+              <MappingFragment StoreEntitySet="InstaLink">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kinds">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Kind">
+              <MappingFragment StoreEntitySet="Kinds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="orderHashId" ColumnName="orderHashId" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Partner">
+              <MappingFragment StoreEntitySet="Partners">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="UniqueNum" ColumnName="UniqueNum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="SaleInPercent" ColumnName="SaleInPercent" />
+                <ScalarProperty Name="ShoppingLink" ColumnName="ShoppingLink" />
+                <ScalarProperty Name="KindId" ColumnName="KindId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="ProductUniqueNum" ColumnName="ProductUniqueNum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="SaledCost" ColumnName="SaledCost" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="productCount" ColumnName="productCount" />
+                <ScalarProperty Name="saleReason" ColumnName="saleReason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecentyAddeds">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.RecentyAdded">
+              <MappingFragment StoreEntitySet="RecentyAdded">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub_admin">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.Sub_admin">
+              <MappingFragment StoreEntitySet="Sub_admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValuablePartners">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.ValuablePartner">
+              <MappingFragment StoreEntitySet="ValuablePartners">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Partner" ColumnName="Partner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeeklyDiscounts">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.WeeklyDiscount">
+              <MappingFragment StoreEntitySet="WeeklyDiscounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YoutubeLinks">
+            <EntityTypeMapping TypeName="Myoutlet.geModel.YoutubeLink">
+              <MappingFragment StoreEntitySet="YoutubeLink">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

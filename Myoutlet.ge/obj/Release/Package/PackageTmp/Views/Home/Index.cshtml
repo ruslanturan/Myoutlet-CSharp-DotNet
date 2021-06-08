@@ -1,0 +1,531 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "Მთავარი";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    @if (@Model.Campaigns.Count > 0)
+    {
+        <div class="hero-area owl-carousel">
+            @foreach (var campaign in @Model.Campaigns)
+            {
+                <div class="hero-blog-post bg-img bg-overlay" style="background-image: url(/Images/Campaigns/@campaign.Link); background-size: contain;">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12">
+                                <div class="post-content text-center">
+                                    <div class="post-meta" data-animation="fadeInUp" data-delay="100ms">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    <div class="pos">
+        <div class="rehomes-search-form-area wow fadeInUp" data-wow-delay="200ms">
+            <div class="container-fluid">
+                <div class="rehomes-search-form">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-12 col-lg-10">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-lg-3">
+                                        <b5>Კატეგორიები:</b5>
+                                        <select name="category" class="form-control ctgry">
+                                            <option value=""></option>
+                                            @if (Model.Categories.Count > 0)
+                                            {
+                                                foreach (var category in Model.Categories)
+                                                {
+                                                    <option value="@category.Id">@category.Name</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                        <option value="">გთხოვთ დაამატოთ კატეგორია</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-3">
+                                        <b5>Ქვეკატეგორიები:</b5>
+                                        <select name="kind" id="kind" class="form-control">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-3">
+                                        <b5>Პარტნიორები:</b5>
+                                        <select name="Partner" id="Partner" class="form-control">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-3">
+                                        <b5>Თანხის დიაპაზონი:</b5>
+                                        <div class="wrapper">
+                                            <div class="range-slider">
+                                                <input type="text" name="costRange" class="js-range-slider" value="" />
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                                <a href="/home/filter?minCost=0&maxCost=20000" id="filter" class="btn rehomes-search-btn">Გაფილტვრა</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="mag-posts-area d-flex flex-wrap">
+        <div class="post-sidebar-area left-sidebar mt-30 mb-30 bg-white box-shadow">
+            @if (Model.Categories.Count > 0)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>Კატეგორიები</h5>
+                    </div>
+                    <ul class="catagory-widgets">
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li>
+                                <a href="/home/kindbycategory/@category.Id">
+                                    <span>
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> @category.Name
+                                    </span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            @if (Model.Adds.Count > 0)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>რეკლამა</h5>
+                    </div>
+                    <div class="single-sidebar-widget">
+                        <a href="//@Model.Adds[0].Linkd" class="add-img">
+                            <img src="~/Images/Adds/@Model.Adds[0].ImgName" alt="">
+                        </a>
+                    </div>
+                </div>
+            }
+            @if (Model.Partners.Count > 0)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>Პარტნიორები</h5>
+                    </div>
+                    @for (var i = 0; i < (Model.Partners.Count) / 2; i++)
+                    {
+                        <div class="single-youtube-channel d-flex">
+                            <div class="youtube-channel-thumbnail">
+                                <a href="/Home/Partner/@Model.Partners[i].Id">
+                                    <img src="~/Images/Partner-Logos/@Model.Partners[i].CompanyLogo" alt="">
+                                </a>
+                            </div>
+                            <div class="youtube-channel-content">
+                                <a href="/Home/Partner/@Model.Partners[i].Id" class="channel-title">@Model.Partners[i].CompanyName</a>
+                                <a href="/Home/Partner/@Model.Partners[i].Id" class="btn subscribe-btn">Ყველა Პროდუქცია</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="mag-posts-content mt-30 mb-30 p-30 box-shadow">
+            @if (Model.Recents.Count > 3 && Model.RecentImgs.Count > 3)
+            {
+                <div class="most-viewed-videos mb-30">
+                    <div class="section-heading">
+                        <h5>Ახალი დამატებული</h5>
+                    </div>
+                    <div class="sports-videos-slides owl-carousel mb-30">
+                        @for (var i = 0; i < Model.Recents.Count; i++)
+                        {
+                            <div class="single-featured-post">
+                                <div class="post-thumbnail mb-50">
+                                    <div class="listing">
+                                        <div class="listing_image">
+                                            <div class="listing_image_container">
+                                                <a href="/Home/Product/@Model.Recents[i].Id">
+                                                    <img src="~/Images/Product-images/@Model.Recents[i].ProductUniqueNum/@Model.RecentImgs[i].Link" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="prop_location listing_location justify-content-start">
+                                        <center>
+                                            <a href="/Home/Product/@Model.Recents[i].Id">@Model.Recents[i].Name</a>
+                                        </center>
+                                        <button class="btn mag-btn w-100 ctnct">Კონტაქტი</button>
+                                        <div class="login-content bg-white box-shadow" style="display: none;position: absolute;top: 240px;left:80px;padding: 10px;z-index:5">
+                                            <div class="section-heading mb-0" style="padding: 0 10px">
+                                                <p class="mb-1">დაწერეთ თქვენი ნომერი და ჩვენ დაგირეკავთ</p>
+                                                <p class="mb-1" style="font-size:10px;">(მხოლოდ 9 ციფრი)</p>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" name="number" class="form-control mb-0" style="padding: 10px; height:30px;" id="" placeholder="ტელეფონის ნომერი">
+                                                <button class="btn mag-btn mt-1 rqst" product-id="@Model.Recents[i].Id" partner-id="@Model.Recents[i].PartnerId" style="height: 30px;line-height:30px;padding: 0 10px;min-width:150px;">Მოთხოვნის გაგზავნა</button>
+                                                <button class="btn mag-btn mt-1 cls" style="height: 30px;line-height:30px;padding: 0 10px;min-width:110px;">Დახურვა</button>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tags d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                    <div class="tag tag_house">
+                                        <a> @Model.Recents[i].Cost ₾</a>
+                                    </div>
+                                    <div class="tag tag_sale">
+                                        <a>@Model.Recents[i].SaleInPercent %</a>
+                                    </div>
+                                </div>
+                                <div class="post-share-area d-flex align-items-center justify-content-between">
+                                    <div class="post-meta pl-3">
+                                        <div class="post-meta d-flex">
+                                            <div class="img1">
+                                                <img src="~/img/bg-img/icon1.png">
+                                            </div>
+                                            <a href="/home/partner/@Model.Recents[i].PartnerId">&nbsp @Model.Recents[i].Partner.CompanyName</a>
+                                            <div class="img2">
+                                                <img src="~/img/bg-img/icon2.png">
+                                            </div>
+                                            <a href="/home/productbykind/@Model.Recents[i].KindId">&nbsp @Model.Recents[i].Kind.Name</a>
+                                        </div>
+                                    </div>
+                                    <div class="share-info">
+                                        <a class="sharebtn">
+                                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="all-share-btn d-flex">
+                                            <a href="" onclick="console.log('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href)); return false;" target="_blank" class="facebook">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.HotDiscounts.Count > 3 && @Model.HotImgs.Count > 3)
+            {
+                <div class="most-viewed-videos mb-30">
+                    <div class="section-heading">
+                        <h5>Ცხელი ფასდაკლებები</h5>
+                    </div>
+                    <div class="sports-videos-slides owl-carousel mb-30">
+                        @for (var i = 0; i < Model.HotDiscounts.Count; i++)
+                        {
+                            <div class="single-featured-post">
+                                <div class="post-thumbnail mb-50">
+                                    <div class="listing">
+                                        <div class="listing_image">
+                                            <div class="listing_image_container">
+                                                <a href="/home/product/@Model.HotDiscounts[i].Id">
+                                                    <img src="~/Images/Product-images/@Model.HotDiscounts[i].ProductUniqueNum/@Model.HotImgs[i].Link" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="prop_location listing_location justify-content-start">
+                                        <center>
+                                            <a href="/home/product/@Model.HotDiscounts[i].Id">@Model.HotDiscounts[i].Name</a>
+                                        </center>
+                                        <button class="btn mag-btn w-100 ctnct">Კონტაქტი</button>
+                                        <div class="login-content bg-white box-shadow" style="display: none;position: absolute;top: 240px;left:80px;padding: 10px;z-index:5">
+                                            <div class="section-heading mb-0" style="padding: 0 10px">
+                                                <p class="mb-1">დაწერეთ თქვენი ნომერი და ჩვენ დაგირეკავთ</p>
+                                                <p class="mb-1" style="font-size:10px;">(მხოლოდ 9 ციფრი)</p>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" name="number" class="form-control mb-0" style="padding: 10px; height:30px;" id="" placeholder="ტელეფონის ნომერი">
+                                                <button class="btn mag-btn mt-1 rqst" product-id="@Model.HotDiscounts[i].Id" partner-id="@Model.HotDiscounts[i].PartnerId" style="height: 30px;line-height:30px;padding: 0 10px;min-width:150px;">Მოთხოვნის გაგზავნა</button>
+                                                <button class="btn mag-btn mt-1 cls" style="height: 30px;line-height:30px;padding: 0 10px;min-width:110px;">Დახურვა</button>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tags d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                    <div class="tag tag_house">
+                                        <a>@Model.HotDiscounts[i].Cost ₾</a>
+                                    </div>
+                                    <div class="tag tag_sale">
+                                        <a>@Model.HotDiscounts[i].SaleInPercent %</a>
+                                    </div>
+                                </div>
+                                <div class="post-share-area d-flex align-items-center justify-content-between">
+                                    <div class="post-meta pl-3">
+                                        <div class="post-meta d-flex">
+                                            <div class="img1">
+                                                <img src="~/img/bg-img/icon1.png">
+                                            </div>
+                                            <a href="/home/partner/@Model.HotDiscounts[i].PartnerId">&nbsp @Model.HotDiscounts[i].Partner.CompanyName</a>
+                                            <div class="img2">
+                                                <img src="~/img/bg-img/icon2.png">
+                                            </div>
+                                            <a href="/home/productbykind/@Model.HotDiscounts[i].KindId">&nbsp @Model.HotDiscounts[i].Kind.Name</a>
+                                        </div>
+                                    </div>
+                                    <div class="share-info">
+                                        <a class="sharebtn">
+                                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="all-share-btn d-flex">
+                                            <a href="" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="facebook">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.WeeklyDiscounts.Count > 3 && Model.WeeklyImgs.Count > 3)
+            {
+                <div class="most-viewed-videos mb-30">
+                    <div class="section-heading">
+                        <h5>Ტელეფონის ნომერი</h5>
+                    </div>
+                    <div class="sports-videos-slides owl-carousel mb-30">
+                        @for (var i = 0; i < Model.WeeklyDiscounts.Count; i++)
+                        {
+                            <div class="single-featured-post">
+                                <div class="post-thumbnail mb-50">
+                                    <div class="listing">
+                                        <div class="listing_image">
+                                            <div class="listing_image_container">
+                                                <a href="/home/product/@Model.WeeklyDiscounts[i].Id">
+                                                    <img src="~/Images/Product-images/@Model.WeeklyDiscounts[i].ProductUniqueNum/@Model.WeeklyImgs[i].Link" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="prop_location listing_location justify-content-start">
+                                        <center>
+                                            <a href="/home/product/@Model.WeeklyDiscounts[i].Id">@Model.WeeklyDiscounts[i].Name</a>
+                                        </center>
+                                        <button class="btn mag-btn w-100 ctnct">Კონტაქტი</button>
+                                        <div class="login-content bg-white box-shadow" style="display: none;position: absolute;top: 240px;left:80px;padding: 10px;z-index:5">
+                                            <div class="section-heading mb-0" style="padding: 0 10px">
+                                                <p class="mb-1">დაწერეთ თქვენი ნომერი და ჩვენ დაგირეკავთ</p>
+                                                <p class="mb-1" style="font-size:10px;">(მხოლოდ 9 ციფრი)</p>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" name="number" class="form-control mb-0" style="padding: 10px; height:30px;" id="" placeholder="ტელეფონის ნომერი">
+                                                <button class="btn mag-btn mt-1 rqst" product-id="@Model.WeeklyDiscounts[i].Id" partner-id="@Model.WeeklyDiscounts[i].PartnerId" style="height: 30px;line-height:30px;padding: 0 10px;min-width:150px;">Მოთხოვნის გაგზავნა</button>
+                                                <button class="btn mag-btn mt-1 cls" style="height: 30px;line-height:30px;padding: 0 10px;min-width:110px;">Დახურვა</button>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tags d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                    <div class="tag tag_house">
+                                        <a>@Model.WeeklyDiscounts[i].Cost ₾</a>
+                                    </div>
+                                    <div class="tag tag_sale">
+                                        <a>@Model.WeeklyDiscounts[i].SaleInPercent %</a>
+                                    </div>
+                                </div>
+                                <div class="post-share-area d-flex align-items-center justify-content-between">
+                                    <div class="post-meta pl-3">
+                                        <div class="post-meta d-flex">
+                                            <div class="img1">
+                                                <img src="~/img/bg-img/icon1.png">
+                                            </div>
+                                            <a href="/home/partner/@Model.WeeklyDiscounts[i].PartnerId">&nbsp @Model.WeeklyDiscounts[i].Partner.CompanyName</a>
+                                            <div class="img2">
+                                                <img src="~/img/bg-img/icon2.png">
+                                            </div>
+                                            <a href="/home/productbykind/@Model.WeeklyDiscounts[i].KindId">&nbsp @Model.WeeklyDiscounts[i].Kind.Name</a>
+                                        </div>
+                                    </div>
+                                    <div class="share-info">
+                                        <a class="sharebtn">
+                                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="all-share-btn d-flex">
+                                            <a onclick="console.log(location.href + '/product/');" class="facebook">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.ValuablePartners.Count > 0)
+            {
+                <div class="feature-video-posts mb-30">
+                    <div class="section-heading">
+                        <h5>Მნიშვნელოვანი Პარტნიორები</h5>
+                    </div>
+                    @foreach (var partner in Model.ValuablePartners)
+                    {
+                        <div class="featured-video-posts mb-30">
+                            <div class="row">
+                                <div class="col-12 col-lg-7">
+                                    <div class="single-featured-post">
+                                        <div class="size_img_container">
+                                            <a href="/home/partner/@partner.Id">
+                                                <img src="~/Images/Partner-logos/@partner.CompanyLogo" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <a href="/home/partner/@partner.Id" class="post-title btn mag-btn w-100">@partner.CompanyName</a>
+                                            @if (partner.Phone != null)
+                                            {
+                                                <p class="mt-3">
+                                                    <b>საინფორმაციო ცენტრი (+995) @partner.Phone</b>
+                                                </p>
+                                            }
+                                        </div>
+                                        <div class="post-share-area d-flex align-items-center justify-content-between">
+                                            <div class="post-meta pl-3">
+                                                <a>
+                                                    პროდუქცია:
+                                                    <b>@partner.Products.Where(x => x.Status == true).ToList().Count</b>
+                                                </a>
+                                            </div>
+                                            <div class="share-info">
+                                                <a class="sharebtn">
+                                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                                </a>
+                                                <div class="all-share-btn d-flex">
+                                                    <a onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="facebook">
+                                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-5">
+                                    <div class="featured-video-posts-slide owl-carousel">
+                                        @if (partner.Products.Where(x => x.Status == true).ToList().Count > 0)
+                                        {
+                                            var products = partner.Products.Where(x => x.Status == true).ToArray();
+                                            for (var j = 0; j < partner.Products.Where(x => x.Status == true).ToList().Count / 3; j++)
+                                            {
+                                                <div class="single--slide valuable mt-2">
+                                                    @for (var i = 0; i < 3; i++)
+                                                    {
+                                                        if (products[(j * 3) + i] != null && ((j * 3) + i) < 9)
+                                                        {
+                                                            <div class="single-blog-post d-flex style-3 mb-30">
+                                                                <div class="post-thumbnail">
+                                                                    <a href="/home/product/@products[(j*3) + i].Id">
+                                                                        <img src="~/Images/Product-Images/@products[(j*3) + i].ProductUniqueNum/@products[(j*3) + i].Photo" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content cont">
+                                                                    <div class="post-meta d-flex">
+                                                                        <a href="/home/product/@products[(j*3) + i].Id" class="post-title" style="font-size:18px;color:#000000;">@products[(j * 3) + i].Name</a>
+                                                                        <a style="padding-top:4px;">
+                                                                            <i class="fa fa-eye" aria-hidden="true"></i> @products[(j * 3) + i].Views
+                                                                        </a>
+                                                                    </div>
+                                                                    <button class="btn mag-btn w-100 ctnct" style="height: 40px;line-height: 1px;">Კონტაქტი</button>
+                                                                    <div class="login-content bg-white box-shadow" style="display: none;position: absolute;top: -20px;left:125px;padding: 10px;z-index:5">
+                                                                        <div class="section-heading mb-0" style="padding: 0 10px">
+                                                                            <p class="mb-1">დაწერეთ თქვენი ნომერი და ჩვენ დაგირეკავთ</p>
+                                                                            <p class="mb-1" style="font-size:10px;">(მხოლოდ 9 ციფრი)</p>
+                                                                        </div>
+                                                                        <div class="form-group mb-0">
+                                                                            <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" name="number" class="form-control mb-0" style="padding: 10px; height:30px;" id="" placeholder="ტელეფონის ნომერი">
+                                                                            <button class="btn mag-btn mt-1 rqst" product-id="@products[(j*3) + i].Id" partner-id="@products[(j*3) + i].PartnerId" style="height: 30px;line-height:30px;padding: 0 10px;min-width:150px;">Მოთხოვნის გაგზავნა</button>
+                                                                            <button class="btn mag-btn mt-1 cls" style="height: 30px;line-height:30px;padding: 0 10px;min-width:110px;">Დახურვა</button>                                                                            <p class="mb-0"></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="post-sidebar-area right-sidebar mt-30 mb-30 box-shadow">
+            <div class="single-sidebar-widget p-30">
+                <div class="social-followers-info">
+                    @if (Model.FbLink != null)
+                    {
+                        <a href="//@Model.FbLink.Link" class="facebook-fans">
+                            <i class="fa fa-facebook"></i>
+                            <span>ფანი</span>
+                        </a>
+                    }
+                    @if (Model.InstaLink != null)
+                    {
+                        <a href="//@Model.InstaLink.Link" class="instagram">
+                            <i class="fa fa-instagram"></i>
+                            <span>მიმდევარი</span>
+                        </a>
+                    }
+                    @if (Model.YoutubeLink != null)
+                    {
+                        <a href="//@Model.YoutubeLink.Link" class="youtube-subscribers">
+                            <i class="fa fa-youtube"></i>
+                            <span>გამომწერი</span>
+                        </a>
+                    }
+                </div>
+            </div>
+            @if (Model.Adds.Count > 1)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>Რეკლამა</h5>
+                    </div>
+                    <div class="single-sidebar-widget">
+                        <a href="//@Model.Adds[1].Linkd" class="add-img">
+                            <img src="~/Images/Adds/@Model.Adds[1].ImgName" alt="">
+                        </a>
+                    </div>
+                </div>
+            }
+            @if (Model.Partners.Count > 0)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>Პარტნიორები</h5>
+                    </div>
+                    @for (var i = 0; i < (Model.Partners.Count + 1) / 2; i++)
+                    {
+                        <div class="single-youtube-channel d-flex">
+                            <div class="youtube-channel-thumbnail">
+                                <a href="/Home/Partner/@Model.Partners[i + (Model.Partners.Count)/2].Id">
+                                    <img src="~/Images/Partner-Logos/@Model.Partners[i + (Model.Partners.Count)/2].CompanyLogo" alt="">
+                                </a>
+                            </div>
+                            <div class="youtube-channel-content">
+                                <a href="/Home/Partner/@Model.Partners[i + (Model.Partners.Count)/2].Id" class="channel-title">@Model.Partners[i + (Model.Partners.Count) / 2].CompanyName</a>
+                                <a href="/Home/Partner/@Model.Partners[i + (Model.Partners.Count)/2].Id" class="btn subscribe-btn">Ყველა Პროდუქცია</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>

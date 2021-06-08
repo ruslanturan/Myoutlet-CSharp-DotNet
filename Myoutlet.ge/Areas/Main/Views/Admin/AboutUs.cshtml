@@ -1,0 +1,43 @@
+﻿@using Myoutlet.ge.Models
+@model About
+@{
+    ViewBag.Title = "ჩვენ შესახებ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">ჩვენ შესახებ</div>
+                        <div class="card-body">
+                            <form class="register" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(m => m.Id)
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                            @Html.TextBoxFor(m => m.MobilePhone, new { type = "number", onkeydown = "javascript: return event.keyCode == 69 ? false : true", id = "MobilePhone", name = "mobilePhone", @class = "form-control", placeholder = "ტელეფონის ნომერი", autofocus="autofocus" })
+                                            @Html.LabelFor(m => m.MobilePhone, "ტელეფონის ნომერი")
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        @Html.TextBoxFor(m => m.Mail, new { type = "email", id = "Mail", name = "mail", @class = "form-control", placeholder = "ᲔᲚ- Ფოსტა" })
+                                        @Html.LabelFor(m => m.Mail, "ელ-ფოსტა")
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        @Html.TextAreaFor(m => m.LittleInfo, new { rows="2", id="littleInfo", name="littleInfo", @class="form-control", placeholder="მცირე ინფორმაცია" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        @Html.TextAreaFor(m => m.Text, new { rows = "5", id = "info", name = "info", @class = "form-control", placeholder = "ინფორმაცია" })
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block" type="submit">დამახსოვრება</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

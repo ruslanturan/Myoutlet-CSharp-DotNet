@@ -1,0 +1,47 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "ახალი ქვეკატეგორიის დამატება";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">ახალი ქვეკატეგორია</div>
+                        <div class="card-body">
+                            <form class="register" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label for="Category">კატეგორიის მონიშვნა</label>
+                                    <div class="form-label-group">
+                                        <select id="Category" name="CategoryId" required="required" class="form-control">
+                                            <option value="0">კატეგორია</option>
+                                            @foreach (var ct in Model.Categories)
+                                            {
+                                                <option value="@ct.Id">@ct.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="text" id="Name" name="Name" class="form-control" placeholder="Kind's name" required="required" autofocus="autofocus">
+                                        <label for="Name">ქვეკატეგორიის სახელი</label>
+                                    </div>
+                                </div>
+                                <div class="form-group ad-img">
+                                    <input type="file" id="CompLogo" name="image" />
+                                    <ul class="img-list">
+                                        <li class="add-img" id="logo">
+                                            <i class="fas fa-camera text-center"></i>
+                                            <p class="text-center mt-3">სურათის ატვირთვა</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @Html.ValidationMessage("Error", new { @class = "text-danger" })
+                            <button class="btn btn-primary btn-block adkind" type="submit">დამახსოვრება</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

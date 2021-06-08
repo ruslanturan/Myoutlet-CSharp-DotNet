@@ -1,0 +1,58 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "Პარტნიორები";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+            <div class="container-fluid">
+                <a href="/main/admin/register_new_partner" class="btn mb-3 btn-success">Ახალი Პარტნიორის Დამატება</a>
+                <div id="partners" class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Პარტნიორები
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" >
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th id="btn">Საიდენტიფიკაციო Ნომერი</th>
+                                        <th>Სახელი</th>
+                                        <th>ᲔᲚ-Ფოსტა</th>
+                                        <th>Ტელეფონი</th>
+                                        <th>Სტატუსი</th>
+                                        <th id="sts"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var partner in Model.Partners)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a href="/home/partner/@partner.Id">@partner.CompanyId</a>
+                                            </td>
+                                            <td>
+                                                <a href="/home/partner/@partner.Id">@partner.CompanyName</a>
+                                            </td>
+                                            <td>@partner.Email</td>
+                                            <td>@partner.Phone</td>
+                                            @if (@partner.Status == true)
+                                            {
+                                                <td>აქტიური</td>
+                                            }
+                                            @if (@partner.Status == false)
+                                            {
+                                                <td>დაბლოკილი</td>
+                                            }
+                                            <td>
+                                                <a href="/main/admin/changepartnerstatus/@partner.Id" class="stsPrtnr sbmt btn btn-warning">სტატუსის შეცვლა</a>
+                                                <a href="/main/admin/RemovePartner/@partner.Id" class="rmvPrtnr sbmt btn btn-danger">წაშლა</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

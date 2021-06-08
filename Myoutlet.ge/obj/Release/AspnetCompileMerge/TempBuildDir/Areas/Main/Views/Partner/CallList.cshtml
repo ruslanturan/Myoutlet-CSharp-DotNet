@@ -1,0 +1,44 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "Ზარის Განხორციელება";
+    Layout = "~/Views/Shared/_LayoutPartner.cshtml";
+}
+            <div class="container-fluid">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Ზარის Განხორციელება
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Პროდუქტი</th>
+                                        <th>Ტელეფონი</th>
+                                        <th id="btn"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Requests.Count > 0)
+                                    {
+                                        foreach (var req in Model.Requests)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a href="/home/product/@req.ProductId">@req.Product.Name</a>
+                                                </td>
+                                                <td>@req.PhoneNum</td>
+                                                <td>
+                                                    <a href="/main/partner/called/@req.Id" class="btn btn-warning cll">Დაირეკა</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

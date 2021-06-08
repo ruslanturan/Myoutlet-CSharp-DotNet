@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyoutletgeModelStoreContainer" CdmEntityContainer="MyoutletEntities">
+    <EntitySetMapping Name="Abouts">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.About">
+        <MappingFragment StoreEntitySet="About">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="LittleInfo" ColumnName="LittleInfo" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adds">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Add">
+        <MappingFragment StoreEntitySet="Adds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+          <ScalarProperty Name="Linkd" ColumnName="Linkd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="callRequests">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.callRequest">
+        <MappingFragment StoreEntitySet="callRequests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Campaigns">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Campaign">
+        <MappingFragment StoreEntitySet="Campaigns">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Descriptions">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Description">
+        <MappingFragment StoreEntitySet="Descriptions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="DescName" ColumnName="DescName" />
+          <ScalarProperty Name="DescValue" ColumnName="DescValue" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="InSearch" ColumnName="InSearch" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FbLinks">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.FbLink">
+        <MappingFragment StoreEntitySet="FbLink">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galleries">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Gallery">
+        <MappingFragment StoreEntitySet="Galleries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ProductUniqueNum" ColumnName="ProductUniqueNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotDiscounts">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.HotDiscount">
+        <MappingFragment StoreEntitySet="HotDiscounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InstaLinks">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.InstaLink">
+        <MappingFragment StoreEntitySet="InstaLink">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kinds">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Kind">
+        <MappingFragment StoreEntitySet="Kinds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partners">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Partner">
+        <MappingFragment StoreEntitySet="Partners">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="UniqueNum" ColumnName="UniqueNum" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="SaleInPercent" ColumnName="SaleInPercent" />
+          <ScalarProperty Name="ShoppingLink" ColumnName="ShoppingLink" />
+          <ScalarProperty Name="KindId" ColumnName="KindId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+          <ScalarProperty Name="ProductUniqueNum" ColumnName="ProductUniqueNum" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecentyAddeds">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.RecentyAdded">
+        <MappingFragment StoreEntitySet="RecentyAdded">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sub_admin">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.Sub_admin">
+        <MappingFragment StoreEntitySet="Sub_admin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ValuablePartners">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.ValuablePartner">
+        <MappingFragment StoreEntitySet="ValuablePartners">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Partner" ColumnName="Partner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeeklyDiscounts">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.WeeklyDiscount">
+        <MappingFragment StoreEntitySet="WeeklyDiscounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YoutubeLinks">
+      <EntityTypeMapping TypeName="Myoutlet.geModel.YoutubeLink">
+        <MappingFragment StoreEntitySet="YoutubeLink">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

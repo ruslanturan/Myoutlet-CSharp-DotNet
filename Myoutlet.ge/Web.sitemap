@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="Index.cshtml" title="Home"  description="Home">
+    <siteMapNode url="Filter.cshtml" title="Filter"  description="Filter" />
+    <siteMapNode url="AboutUs.cshtml" title="About Us"  description="About Us" />
+    <siteMapNode url="KindByCategory.cshtml" title="Kinds"  description="Kinds" />
+    <siteMapNode url="Partner.cshtml" title="Partner"  description="Partner" />
+    <siteMapNode url="Partners.cshtml" title="Partners"  description="Partners" />
+    <siteMapNode url="Product.cshtml" title="Product"  description="Product" />
+    <siteMapNode url="Products.cshtml" title="Products"  description="Products" />
+    <siteMapNode url="Search.cshtml" title="Search"  description="Search" />
+  </siteMapNode>
+</siteMap>

@@ -1,0 +1,58 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutPartner.cshtml";
+    ViewBag.Title = Model.Partner.CompanyName + "-ის დაფა";
+}
+<div class="container-fluid">
+    <a href="/main/partner/addproduct/@Model.Partner.Id" class="btn mb-3 btn-success">Ახალი Პროდუქტის Დამატება</a>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Პროდუქტები
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Სახელი</th>
+                            <th>Კატეგორია</th>
+                            <th>Ქვეკატეგორია</th>
+                            <th>Სტატუსი</th>
+                            <th id="btn"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr data-id="@product.Id">
+                                <td>
+                                    <a href="/home/product/@product.Id">@product.Name</a>
+                                </td>
+                                <td>@product.Category.Name</td>
+                                <td>@product.Kind.Name</td>
+                                @if (@product.Status == true)
+                                {
+                                    <td>აქტიური</td>
+                                }
+                                @if (@product.Status == false)
+                                {
+                                    <td>დაბლოკილი</td>
+                                }
+                                @if (@product.Status == null)
+                                {
+                                    <td>დაელოდეთ დადასტურებას</td>
+                                }
+                                <td>
+                                    <a href="/main/partner/editproduct/@product.Id" class="edtPrdct sbmt btn btn-warning">შესწორება</a>
+                                    <a href="/main/partner/removeproduct/@product.Id" class="remvPrdct sbmt btn btn-danger">წაშლა</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

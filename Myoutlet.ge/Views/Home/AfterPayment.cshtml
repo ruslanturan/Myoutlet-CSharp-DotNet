@@ -1,0 +1,82 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "განაგრძო გადახდა";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="post-details-area mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="post-details-content bg-white mb-30 p-30 box-shadow" style="padding-bottom:">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <form method="post" id="uni-form">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <label for="fullname">სრული სახელი</label>
+                                        <input type="text" id="fullname" name="fullname" class="form-control fullname" placeholder="სრული სახელი" required="required">
+                                        <label style="color:red;display:none" class="fullname-error">გთხოვთ, სწორად შეავსოთ</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <label for="email">ელ-ფოსტა</label>
+                                        <input type="email" id="email" name="email" class="form-control email" placeholder="ელ-ფოსტა" required="required">
+                                        <label style="color:red;display:none" class="email-error">გთხოვთ, სწორად შეავსოთ</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <label for="phone">ტელეფონის ნომერი(მაგალითი:5xx xxx xxx)</label>
+                                        <input type="number" id="phone" onkeydown="javascript: return event.keyCode == 69 ? false : true" name="phone" class="form-control phone" placeholder="ტელეფონის ნომერი" required="required">
+                                        <label style="color:red;display:none" class="phone-error">გთხოვთ, სწორად შეავსოთ</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="town">აირჩიეთ ქალაქი</label>
+                                    <div class="form-label-group">
+                                        <select id="town" name="town" class="form-control">
+                                            <option value="0" selected>თბილისი</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <label for="address">მისამართი</label>
+                                        <input type="text" id="address" name="address" class="form-control address" placeholder="მისამართი" required="required">
+                                        <label style="color:red;display:none" class="address-error">გთხოვთ შეავსოთ</label>
+                                    </div>
+                                </div>
+                                <input type="number" style="display:none" id="price" class="price" name="price" value="@Model.Total">
+                                <input type="text" style="display:none" id="desc" class="desc" name="desc" >
+                            </form>
+                        </div>
+                            <div class="col-md-6 col-12">
+                                <div style="border: 2px solid #ed3974;margin: 30px; 0">
+                                    <ul class="mt-3 ml-3">
+                                        @for (int p = 0; p < Model.Products.Count; p++)
+                                        {
+                                                <li class="desc">
+                                                    @Model.Products[p].Name - @Model.Details[p]
+                                                </li>
+                                        }
+                                    </ul>
+                                    <p style="text-align: center;font-size: 25px;">ჯამი: @Model.Total GEL</p>
+                                </div>
+                                <div class="row" style="height:60px;">
+                                    <div class="col-6 offset-3" style="">
+                                        <button class="w-100 h-100" style="border: 1px solid #d53362;border-radius: 5px;" id="unipay">
+                                            <img src="~/Images/unipay.png" style="padding:5px;" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,156 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+    @{
+        ViewBag.Title = "Ქვეკატეგორიები";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @if (Model.Campaigns.Count > 0)
+    {
+        <div class="hero-area owl-carousel">
+            @foreach (var campaign in Model.Campaigns)
+            {
+                <div class="hero-blog-post bg-img bg-overlay" style="background-image: url(/Images/Campaigns/@campaign.Link);background-size: contain;">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12">
+                                <div class="post-content text-center">
+                                    <div class="post-meta" data-animation="fadeInUp" data-delay="100ms">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    <div class="mag-breadcrumb py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/home/index">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Მთავარი
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">@Model.Category.Name</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="mag-posts-area d-flex flex-wrap">
+        <div class="post-sidebar-area left-sidebar mb-30 bg-white box-shadow">
+            @if (Model.Categories.Count > 0)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>Კატეგორიები</h5>
+                    </div>
+                    <ul class="catagory-widgets">
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li>
+                                <a href="/home/kindbycategory/@category.Id">
+                                    <span>
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> @category.Name
+                                    </span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            @if (Model.Adds.Count > 0)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>ეკლამა</h5>
+                    </div>
+                    <div class="single-sidebar-widget">
+                        <a href="//@Model.Adds[0].Linkd" class="add-img">
+                            <img src="~/Images/Adds/@Model.Adds[0].ImgName" alt="">
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (Model.Kinds.Count > 0)
+        {
+            <div class="mag-posts-content mb-30 p-30 box-shadow">
+                <div class="section-heading">
+                    <h5>Ქვეკატეგორიები</h5>
+                </div>
+                @for (var i = 0; i < Model.Kinds.Count; i++)
+                {
+                    var kinds = Model.Kinds.ToArray();
+                    <div class="single-featured-post one-post">
+                        <div class="post-thumbnail mb-50">
+                            @if (kinds[i].image != null)
+                            {
+                                <div class="listing">
+                                    <div class="listing_image">
+                                        <div class="listing_image_container">
+                                            <a href="/home/productbykind/@kinds[i].Id">
+                                                <img src="~/Images/Kinds/@kinds[i].image" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="prop_location listing_location justify-content-start">
+                                <center>
+                                    <a class="mb-3" href="/home/productbykind/@kinds[i].Id">@kinds[i].Name</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        }
+        <div class="post-sidebar-area right-sidebar mb-30 box-shadow">
+            <div class="single-sidebar-widget p-30">
+                <div class="social-followers-info">
+                    @if (Model.FbLink != null)
+                    {
+                        <a href="//@Model.FbLink.Link" class="facebook-fans">
+                            <i class="fa fa-facebook"></i>
+                            <span>ფანი</span>
+                        </a>
+                    }
+                    @if (Model.InstaLink != null)
+                    {
+                        <a href="//@Model.InstaLink.Link" class="instagram">
+                            <i class="fa fa-instagram"></i>
+                            <span>მიმდევარი</span>
+                        </a>
+                    }
+                    @if (Model.YoutubeLink != null)
+                    {
+                        <a href="//@Model.YoutubeLink.Link" class="youtube-subscribers">
+                            <i class="fa fa-youtube"></i>
+                            <span>გამომწერი</span>
+                        </a>
+                    }
+                </div>
+            </div>
+            @if (Model.Adds.Count > 1)
+            {
+                <div class="single-sidebar-widget p-30">
+                    <div class="section-heading">
+                        <h5>ეკლამა</h5>
+                    </div>
+                    <div class="single-sidebar-widget">
+                        <a href="//@Model.Adds[1].Linkd" class="add-img">
+                            <img src="~/Images/Adds/@Model.Adds[1].ImgName" alt="">
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>

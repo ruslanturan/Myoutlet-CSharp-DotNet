@@ -1,0 +1,267 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+        ViewBag.Title = Model.Product.Name;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <div class="mag-breadcrumb py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/home/index">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    მთავარი
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/Home/kindbycategory/@Model.Product.Category.Id">@Model.Product.Category.Name</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/Home/productbykind/@Model.Product.Kind.Id">@Model.Product.Kind.Name</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">@Model.Product.Name</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="post-details-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                        <div class="blog-content">
+                            <div class="tags d-flex flex-row align-items-start justify-content-start flex-wrap" style="position:unset">
+                                <div class="tag tag_green">
+                                    <a>@Model.Product.Cost GEL</a>
+                                    <div class="line2"></div>
+                                </div>
+                                <div class="tag tag_sale">
+                                    <a>@Model.Product.SaleInPercent%</a>
+                                </div>
+                                <div class="tag tag_house">
+                                    <a>@Model.Product.SaledCost GEL</a>
+                                </div>
+                            </div>
+                            <h4 class="post-title">
+                                @Model.Product.Name
+                            </h4>
+
+                            <div class="sports-videos-slides_2 owl-carousel mb-30 ">
+                                @foreach (var image in Model.Galleries)
+                                {
+                                    <div class="single-featured-post h-100">
+                                        <div class="post-thumbnail mb-2 h-100">
+                                            <div class="listingg h-100">
+                                                <div class="listing_image h-100">
+                                                    <div class="listing_image_container" style="height:500px">
+                                                        <img class="img_pt" src="~/Images/Product-images/@image.ProductUniqueNum/@image.Link">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="post-share-area align-items-center mt-0 mb-5">
+                                <div class="post-meta pl-3 row">
+                                    <div class="post-meta d-inline-block">
+                                        <div class="d-flex">
+                                            <div class="img1">
+                                                <img src="~/img/bg-img/icon1.png">
+                                            </div>
+                                            <a class="c-black" href="/home/partner/@Model.Partner.Id">&nbsp @Model.Partner.CompanyName</a>
+                                        </div>
+                                        <div class="d-flex mt-1">
+                                            <div class="img2">
+                                                <img src="~/img/bg-img/icon2.png">
+                                            </div>
+                                            <a class="c-black" href="/home/productbykind/@Model.Product.Kind.Id">&nbsp @Model.Product.Kind.Name</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="share-info d-flex t-68">
+                                    <a class="sharebtn">
+                                        <i class="fa fa-share-alt tn" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="all-share-btn d-flex">
+                                        <a class="facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="basket" data-id="@Model.Product.Id" class="btn mag-btn w-100">კალათაში დამატება</button>
+                        <p class="mt-3 fv" style="font-size:22px">ფასდაკლების მიზეზი: @Model.Product.saleReason</p>
+                        <p class="mt-3 fv" style="font-size:22px">ახლა გვაქვს @Model.Product.productCount ასეთი პროდუქტი</p>
+                        <p class="mt-3 fv">აღწერა</p>
+                        @foreach (var desc in Model.Descriptions)
+                        {
+                            if (desc.Heading != null)
+                            {
+                                <div class="descd">
+                                    @Html.Raw(@desc.Heading)
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+                @if (Model.SimilarProducts != null)
+                {
+                    <div class="comment_area clearfix bg-white mb-30 p-30 box-shadow">
+                        <div class="section-heading mt-3">
+                            <h5>მსგავსი პროდუქცია</h5>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                @foreach (var product in Model.SimilarProducts)
+                                {
+                                    <div class="col-12 col-md-4">
+                                        <div class="post-thumbnail">
+                                            <div class="listingg">
+                                                <div class="listing_image">
+                                                    <div class="listing_image_container">
+                                                        <a href="/home/product/@product.Id">
+                                                            <img class="img_size" src="~/Images/Product-images/@product.ProductUniqueNum/@product.Photo" alt="@product.Name">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="prop_location listing_location justify-content-start" style="height:80px">
+                                                <center>
+                                                    <a href="/home/product/@product.Id" class="pro-id">@product.Name</a>
+                                                </center>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="tags d-flex flex-row align-items-start justify-content-start flex-wrap" >
+                                            <div class="tag tag_green">
+                                                <a>@product.Cost GEL</a>
+                                                <div class="line2"></div>
+                                            </div>
+                                            <div class="tag tag_sale">
+                                                <a>@product.SaleInPercent%</a>
+                                            </div>
+                                            <div class="tag tag_house">
+                                                <a>@product.SaledCost GEL</a>
+                                            </div>
+                                        </div>
+                                        <div class="post-share-area align-items-center mt-0 mb-5">
+                                            <div class="post-meta pl-3 row">
+                                                <div class="post-meta d-inline-block">
+                                                    <div class="d-flex">
+                                                        <div class="img1">
+                                                            <img src="~/img/bg-img/icon1.png">
+                                                        </div>
+                                                        <a href="/home/partner/@product.PartnerId">&nbsp @product.Partner.CompanyName</a>
+                                                    </div>
+                                                    <div class="d-flex mt-1">
+                                                        <div class="img2">
+                                                            <img src="~/img/bg-img/icon2.png">
+                                                        </div>
+                                                        <a href="/home/productbykind/@product.KindId">&nbsp @product.Kind.Name</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="share-info d-flex c-shr">
+                                                <a class="sharebtn c-white">
+                                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                                </a>
+                                                <div class="all-share-btn d-flex">
+                                                    <a class="facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">
+                                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="comment_area clearfix bg-white mb-30 p-30 box-shadow">
+                    @if (Model.Comments.Count > 0)
+                    {
+                        <div class="comment_area clearfix bg-white mb-30 p-30 box-shadow">
+                            <div class="section-heading">
+                                <h5>კომენტარები</h5>
+                            </div>
+                            <ol>
+                                @foreach (var comment in Model.Comments)
+                                {
+                                    <li class="single_comment_area">
+                                        @if (comment.CommentId == null)
+                                        {
+                                            <div class="comment-content d-flex o-hidden">
+                                                <div class="comment-meta">
+                                                    <a class="comment-date">@comment.PostDate</a>
+                                                    <h6>@comment.Name</h6>
+                                                    <p class="wb-a">@comment.Text</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <a data-id="@comment.Id" class="reply">უპასუხე</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        <ol class="children">
+                                            @foreach (var cmnt in Model.Comments)
+                                            {
+                                                if (cmnt.CommentId == comment.Id)
+                                                {
+                                                    <li class="single_comment_area">
+                                                        <div class="comment-content d-flex o-hidden">
+                                                            <div class="comment-meta">
+                                                                <a class="comment-date">@cmnt.PostDate</a>
+                                                                <h6>@cmnt.Name</h6>
+                                                                <p class="wb-a">@cmnt.Text</p>
+                                                                <div class="d-flex align-items-center">
+                                                                    <a data-id="@comment.Id" class="reply">უპასუხე</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            }
+                                        </ol>
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                    }
+                    <div id="comments" class="post-a-comment-area bg-white mb-30 p-30 box-shadow clearfix">
+                        <div class="section-heading">
+                            <h5>დაწერეთ კომენტარი</h5>
+                            <p class="mt-3 fs-14">ჯერ განვიხილავთ დაწერილ კომენტარს და შემდეგ გამოვაქვეყნებთ მას.</p>
+                        </div>
+                        <div class="contact-form-area">
+                            <p id="reply">
+                            </p>
+                            <form class="com" action="/home/post/@Model.Product.Id" method="post">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="თქვენი სახელი*" required>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <input type="email" class="form-control" name="mail" id="email" placeholder="თქვენი მეილი*" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="მესიჯი*" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn mag-btn mt-30" type="submit">პოსტი</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>

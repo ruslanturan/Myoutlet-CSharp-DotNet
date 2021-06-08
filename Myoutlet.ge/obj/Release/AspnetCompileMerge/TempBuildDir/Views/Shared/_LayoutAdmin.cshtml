@@ -1,0 +1,98 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Images/logo2.png">
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+</head>
+<body id="page-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <a class="sbmt navbar-brand mr-1">Myoutlet-ის ადმინისტრატორის გვერდი</a>
+        <a class="navbar-brand mr-1" style="font-size: 14px" href="/main/login/logout">გამოსვლა</a>
+    </nav>
+    <div id="wrapper">
+        <ul class="sidebar navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="/main/admin/partners">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Პარტნიორები</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/main/admin/advertisements">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Პროდუქტები</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:flex;">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>მისამართები სოციალური</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <a class="dropdown-item" href="/main/admin/facebooklink" style="color:black;">Facebook გვერდი</a>
+                    <a class="dropdown-item" href="/main/admin/instalink" style="color:black;">Instagram გვერდი</a>
+                    <a class="dropdown-item" href="/main/admin/youtubechannel" style="color:black;">Youtube არხი</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:flex;">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Ცვალებადი ველები</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <a class="dropdown-item" href="/main/admin/aboutus" style="color:black;">Ჩვენ Შესახებ</a>
+                    <a class="dropdown-item" href="/main/admin/adds" style="color:black;">Რეკლამებ</a>
+                    <a class="dropdown-item" href="/main/admin/campaigns" style="color:black;">Კამპანიები</a>
+                    <a class="dropdown-item" href="/main/admin/valuablepartners" style="color:black;">Მნიშვნელოვანი Პარტნიორები</a>
+                    <a class="dropdown-item" href="/main/admin/recentlyadded" style="color:black;">Ბოლოს Დამატებულები</a>
+                    <a class="dropdown-item" href="/main/admin/hotdiscounts" style="color:black;">Ცხელი Ფასდაკლებები</a>
+                    <a class="dropdown-item" href="/main/admin/weeklydiscounts" style="color:black;">Ყოველკვირეული Ფასდაკლებები</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/main/admin/categories">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Კატეგორიები</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/main/admin/kinds">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Ქვეკატეგორიები</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/main/admin/comments">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>კომენტარი დამტკიცების მოლოდინშია</span>
+                </a>
+            </li>
+        </ul>
+        <div id="content-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="~/js/demo/datatables-demo.js"></script>
+    <script src="~/js/sb-admin.js"></script>
+    <script src="~/js/Upload Images.js"></script>
+    <script src="~/js/Register.js"></script>
+</body>
+</html>

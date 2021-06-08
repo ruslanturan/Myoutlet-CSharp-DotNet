@@ -1,0 +1,116 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "ახალი პროდუქტის დამატება";
+    Layout = "~/Views/Shared/_LayoutPartner.cshtml";
+}
+    <head>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>tinymce.init({
+  selector: 'textarea#basic-example',
+  height: 500,
+  menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table paste code help wordcount'
+  ],
+  toolbar: 'undo redo | bold italic underline strikethrough | bullist numlist  | removeformat ',
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tiny.cloud/css/codepen.min.css'
+  ]
+});</script>
+    </head>
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5 mb-5">
+                        <div class="card-header">ახალი პროდუქტის დამატება</div>
+                        <div class="card-body">
+                            <input type="hidden" id="ptId" value="@Model.Partner.Id" />
+                            <form method="post" enctype="multipart/form-data" id="prdct">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" id="prdtcUnique" name="ProductUniqueNum" />
+                                <div class="form-group">
+                                    <label for="Category">კატეგორიის არჩევა</label>
+                                    <div class="form-label-group">
+                                        <select id="Category" name="CategoryId" class="form-control">
+                                            <option value="0">კატეგორია</option>
+                                            @foreach (var ct in Model.Categories)
+                                            {
+                                                <option value="@ct.Id">@ct.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Kind">ქვეკატეგორიის არჩევა</label>
+                                    <div class="form-label-group">
+                                        <select id="Kind" name="KindId" class="form-control">
+                                            <option value="0">ქვეკატეგორია</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="text" id="Name" name="Name" class="form-control" placeholder="პროდუქტის სახელი">
+                                        <label for="Name">პროდუქტის სახელი</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" id="productCount" name="productCount" class="form-control" placeholder="პროდუქტის რაოდენობა">
+                                        <label for="productCount">პროდუქტის რაოდენობა</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" id="Cost" name="Cost" class="form-control" placeholder="პროდუქტის ღირებულება">
+                                        <label for="Cost">პროდუქტის ღირებულება</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" , id="SaledCost" name="SaledCost" class="form-control" placeholder="ფასდაკლებული ფასი">
+                                        <label for="SaledCost">შეიტანეთ ფასდაკლებული ფასი, თუ პროდუქტს აქვს ფასდაკლება</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="text" id="saleReason" name="saleReason" class="form-control" placeholder="ფასდაკლების მიზეზი">
+                                        <label for="saleReason">ფასდაკლების მიზეზი</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" id="amount_to_partner" name="amount_to_partner" class="form-control" placeholder="თანხის გადახდა პარტნიორისთვის">
+                                        <label for="amount_to_partner">თანხის გადახდა პარტნიორისთვის</label>
+                                    </div>
+                                </div>
+                                <label class="ml-1" for="">დაამატე პროდუქტის აღწერა</label>
+                                <textarea id="basic-example" name="description" required="required"></textarea>
+                                <label class="ml-1" for="">სურათის დამატება პროდუქტისთვის</label>
+                                <p id="if">
+                                    (ამ გვერდზე იქნება კარგი სურათების დახარისხება)
+                                </p>
+                                <div class="form-group ad-img">
+                                    <input type="file" id="Gallery" name="img" multiple />
+                                    <ul class="img-list">
+                                        <li class="add-img" id="addImgs">
+                                            <i class="fas fa-camera text-center"></i>
+                                            <p class="text-center">სურათის ატვირთვა</p>
+                                            <p id="more" class="text-center">მაქს. 15 სურათი</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-success btn-block" id="addProduct" type="submit">დაამატე პროდუქტი</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Scroll to Top Button-->
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fas fa-angle-up"></i>
+                </a>
+            </div>

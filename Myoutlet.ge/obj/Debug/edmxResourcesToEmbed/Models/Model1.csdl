@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Myoutlet.geModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="About">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LittleInfo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobilePhone" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Add">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImgName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Linkd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="callRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PhoneNum" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="PartnerId" Type="Int32" />
+    <NavigationProperty Name="Partner" Relationship="Self.FK__callReque__Partn__46E78A0C" FromRole="callRequests" ToRole="Partners" />
+    <NavigationProperty Name="Partner1" Relationship="Self.FK__callReque__Partn__7F2BE32F" FromRole="callRequests" ToRole="Partners" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__callReque__Produ__00200768" FromRole="callRequests" ToRole="Products" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__callReque__Produ__47DBAE45" FromRole="callRequests" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Campaign">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kinds" Relationship="Self.FK__Kinds__CategoryI__02FC7413" FromRole="Categories" ToRole="Kinds" />
+    <NavigationProperty Name="Kinds1" Relationship="Self.FK__Kinds__CategoryI__4BAC3F29" FromRole="Categories" ToRole="Kinds" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__Catego__03F0984C" FromRole="Categories" ToRole="Products" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK__Products__Catego__4CA06362" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="CommentId" Type="Int32" />
+    <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Comments__Produc__01142BA1" FromRole="Comments" ToRole="Products" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__Comments__Produc__48CFD27E" FromRole="Comments" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Description">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DescName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DescValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="InSearch" Type="Boolean" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Descriptions_Products" FromRole="Descriptions" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="FbLink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gallery">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductUniqueNum" Type="Decimal" Precision="9" Scale="0" />
+  </EntityType>
+  <EntityType Name="HotDiscount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__HotDiscou__Produ__02084FDA" FromRole="HotDiscounts" ToRole="Products" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__HotDiscou__Produ__4AB81AF0" FromRole="HotDiscounts" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="InstaLink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kind">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Kinds__CategoryI__02FC7413" FromRole="Kinds" ToRole="Categories" />
+    <NavigationProperty Name="Category1" Relationship="Self.FK__Kinds__CategoryI__4BAC3F29" FromRole="Kinds" ToRole="Categories" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__KindId__04E4BC85" FromRole="Kinds" ToRole="Products" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK__Products__KindId__4D94879B" FromRole="Kinds" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="Int32" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UniqueNum" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="callRequests" Relationship="Self.FK__callReque__Partn__46E78A0C" FromRole="Partners" ToRole="callRequests" />
+    <NavigationProperty Name="callRequests1" Relationship="Self.FK__callReque__Partn__7F2BE32F" FromRole="Partners" ToRole="callRequests" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__Partne__05D8E0BE" FromRole="Partners" ToRole="Products" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK__Products__Partne__4E88ABD4" FromRole="Partners" ToRole="Products" />
+    <NavigationProperty Name="ValuablePartners" Relationship="Self.FK__ValuableP__Partn__07C12930" FromRole="Partners" ToRole="ValuablePartners" />
+    <NavigationProperty Name="ValuablePartners1" Relationship="Self.FK__ValuableP__Partn__5070F446" FromRole="Partners" ToRole="ValuablePartners" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="SaleInPercent" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="ShoppingLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KindId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="PartnerId" Type="Int32" Nullable="false" />
+    <Property Name="ProductUniqueNum" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Views" Type="Int32" />
+    <NavigationProperty Name="callRequests" Relationship="Self.FK__callReque__Produ__00200768" FromRole="Products" ToRole="callRequests" />
+    <NavigationProperty Name="callRequests1" Relationship="Self.FK__callReque__Produ__47DBAE45" FromRole="Products" ToRole="callRequests" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Products__Catego__03F0984C" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Category1" Relationship="Self.FK__Products__Catego__4CA06362" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__Produc__01142BA1" FromRole="Products" ToRole="Comments" />
+    <NavigationProperty Name="Comments1" Relationship="Self.FK__Comments__Produc__48CFD27E" FromRole="Products" ToRole="Comments" />
+    <NavigationProperty Name="Descriptions" Relationship="Self.FK_Descriptions_Products" FromRole="Products" ToRole="Descriptions" />
+    <NavigationProperty Name="HotDiscounts" Relationship="Self.FK__HotDiscou__Produ__02084FDA" FromRole="Products" ToRole="HotDiscounts" />
+    <NavigationProperty Name="HotDiscounts1" Relationship="Self.FK__HotDiscou__Produ__4AB81AF0" FromRole="Products" ToRole="HotDiscounts" />
+    <NavigationProperty Name="Kind" Relationship="Self.FK__Products__KindId__04E4BC85" FromRole="Products" ToRole="Kinds" />
+    <NavigationProperty Name="Kind1" Relationship="Self.FK__Products__KindId__4D94879B" FromRole="Products" ToRole="Kinds" />
+    <NavigationProperty Name="Partner" Relationship="Self.FK__Products__Partne__05D8E0BE" FromRole="Products" ToRole="Partners" />
+    <NavigationProperty Name="Partner1" Relationship="Self.FK__Products__Partne__4E88ABD4" FromRole="Products" ToRole="Partners" />
+    <NavigationProperty Name="RecentyAddeds" Relationship="Self.FK__RecentyAd__Produ__06CD04F7" FromRole="Products" ToRole="RecentyAdded" />
+    <NavigationProperty Name="RecentyAddeds1" Relationship="Self.FK__RecentyAd__Produ__4F7CD00D" FromRole="Products" ToRole="RecentyAdded" />
+    <NavigationProperty Name="WeeklyDiscounts" Relationship="Self.FK__WeeklyDis__Produ__08B54D69" FromRole="Products" ToRole="WeeklyDiscounts" />
+    <NavigationProperty Name="WeeklyDiscounts1" Relationship="Self.FK__WeeklyDis__Produ__5165187F" FromRole="Products" ToRole="WeeklyDiscounts" />
+  </EntityType>
+  <EntityType Name="RecentyAdded">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__RecentyAd__Produ__06CD04F7" FromRole="RecentyAdded" ToRole="Products" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__RecentyAd__Produ__4F7CD00D" FromRole="RecentyAdded" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Sub_admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ValuablePartner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Partner" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Partner1" Relationship="Self.FK__ValuableP__Partn__07C12930" FromRole="ValuablePartners" ToRole="Partners" />
+    <NavigationProperty Name="Partner2" Relationship="Self.FK__ValuableP__Partn__5070F446" FromRole="ValuablePartners" ToRole="Partners" />
+  </EntityType>
+  <EntityType Name="WeeklyDiscount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__WeeklyDis__Produ__08B54D69" FromRole="WeeklyDiscounts" ToRole="Products" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__WeeklyDis__Produ__5165187F" FromRole="WeeklyDiscounts" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="YoutubeLink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__callReque__Partn__46E78A0C">
+    <End Role="Partners" Type="Self.Partner" Multiplicity="0..1" />
+    <End Role="callRequests" Type="Self.callRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="callRequests">
+        <PropertyRef Name="PartnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__callReque__Partn__7F2BE32F">
+    <End Role="Partners" Type="Self.Partner" Multiplicity="0..1" />
+    <End Role="callRequests" Type="Self.callRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="callRequests">
+        <PropertyRef Name="PartnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__callReque__Produ__00200768">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="callRequests" Type="Self.callRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="callRequests">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__callReque__Produ__47DBAE45">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="callRequests" Type="Self.callRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="callRequests">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Kinds__CategoryI__02FC7413">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Kinds" Type="Self.Kind" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kinds">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Kinds__CategoryI__4BAC3F29">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Kinds" Type="Self.Kind" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kinds">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Catego__03F0984C">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Catego__4CA06362">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__Produc__01142BA1">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__Produc__48CFD27E">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Descriptions_Products">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="Descriptions" Type="Self.Description" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Descriptions">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HotDiscou__Produ__02084FDA">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="HotDiscounts" Type="Self.HotDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotDiscounts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HotDiscou__Produ__4AB81AF0">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="HotDiscounts" Type="Self.HotDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HotDiscounts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__KindId__04E4BC85">
+    <End Role="Kinds" Type="Self.Kind" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kinds">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="KindId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__KindId__4D94879B">
+    <End Role="Kinds" Type="Self.Kind" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kinds">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="KindId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Partne__05D8E0BE">
+    <End Role="Partners" Type="Self.Partner" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="PartnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Partne__4E88ABD4">
+    <End Role="Partners" Type="Self.Partner" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="PartnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ValuableP__Partn__07C12930">
+    <End Role="Partners" Type="Self.Partner" Multiplicity="1" />
+    <End Role="ValuablePartners" Type="Self.ValuablePartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ValuablePartners">
+        <PropertyRef Name="Partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ValuableP__Partn__5070F446">
+    <End Role="Partners" Type="Self.Partner" Multiplicity="1" />
+    <End Role="ValuablePartners" Type="Self.ValuablePartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ValuablePartners">
+        <PropertyRef Name="Partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RecentyAd__Produ__06CD04F7">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="RecentyAdded" Type="Self.RecentyAdded" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecentyAdded">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RecentyAd__Produ__4F7CD00D">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="RecentyAdded" Type="Self.RecentyAdded" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecentyAdded">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WeeklyDis__Produ__08B54D69">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="WeeklyDiscounts" Type="Self.WeeklyDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WeeklyDiscounts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WeeklyDis__Produ__5165187F">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="WeeklyDiscounts" Type="Self.WeeklyDiscount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WeeklyDiscounts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abouts" EntityType="Self.About" />
+    <EntitySet Name="Adds" EntityType="Self.Add" />
+    <EntitySet Name="callRequests" EntityType="Self.callRequest" />
+    <EntitySet Name="Campaigns" EntityType="Self.Campaign" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Descriptions" EntityType="Self.Description" />
+    <EntitySet Name="FbLinks" EntityType="Self.FbLink" />
+    <EntitySet Name="Galleries" EntityType="Self.Gallery" />
+    <EntitySet Name="HotDiscounts" EntityType="Self.HotDiscount" />
+    <EntitySet Name="InstaLinks" EntityType="Self.InstaLink" />
+    <EntitySet Name="Kinds" EntityType="Self.Kind" />
+    <EntitySet Name="Partners" EntityType="Self.Partner" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="RecentyAddeds" EntityType="Self.RecentyAdded" />
+    <EntitySet Name="Sub_admin" EntityType="Self.Sub_admin" />
+    <EntitySet Name="ValuablePartners" EntityType="Self.ValuablePartner" />
+    <EntitySet Name="WeeklyDiscounts" EntityType="Self.WeeklyDiscount" />
+    <EntitySet Name="YoutubeLinks" EntityType="Self.YoutubeLink" />
+    <AssociationSet Name="FK__callReque__Partn__46E78A0C" Association="Self.FK__callReque__Partn__46E78A0C">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="callRequests" EntitySet="callRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__callReque__Partn__7F2BE32F" Association="Self.FK__callReque__Partn__7F2BE32F">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="callRequests" EntitySet="callRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__callReque__Produ__00200768" Association="Self.FK__callReque__Produ__00200768">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="callRequests" EntitySet="callRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__callReque__Produ__47DBAE45" Association="Self.FK__callReque__Produ__47DBAE45">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="callRequests" EntitySet="callRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Kinds__CategoryI__02FC7413" Association="Self.FK__Kinds__CategoryI__02FC7413">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Kinds" EntitySet="Kinds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Kinds__CategoryI__4BAC3F29" Association="Self.FK__Kinds__CategoryI__4BAC3F29">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Kinds" EntitySet="Kinds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Catego__03F0984C" Association="Self.FK__Products__Catego__03F0984C">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Catego__4CA06362" Association="Self.FK__Products__Catego__4CA06362">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__Produc__01142BA1" Association="Self.FK__Comments__Produc__01142BA1">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__Produc__48CFD27E" Association="Self.FK__Comments__Produc__48CFD27E">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Descriptions_Products" Association="Self.FK_Descriptions_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Descriptions" EntitySet="Descriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HotDiscou__Produ__02084FDA" Association="Self.FK__HotDiscou__Produ__02084FDA">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="HotDiscounts" EntitySet="HotDiscounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HotDiscou__Produ__4AB81AF0" Association="Self.FK__HotDiscou__Produ__4AB81AF0">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="HotDiscounts" EntitySet="HotDiscounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__KindId__04E4BC85" Association="Self.FK__Products__KindId__04E4BC85">
+      <End Role="Kinds" EntitySet="Kinds" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__KindId__4D94879B" Association="Self.FK__Products__KindId__4D94879B">
+      <End Role="Kinds" EntitySet="Kinds" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Partne__05D8E0BE" Association="Self.FK__Products__Partne__05D8E0BE">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Partne__4E88ABD4" Association="Self.FK__Products__Partne__4E88ABD4">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ValuableP__Partn__07C12930" Association="Self.FK__ValuableP__Partn__07C12930">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="ValuablePartners" EntitySet="ValuablePartners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ValuableP__Partn__5070F446" Association="Self.FK__ValuableP__Partn__5070F446">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="ValuablePartners" EntitySet="ValuablePartners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RecentyAd__Produ__06CD04F7" Association="Self.FK__RecentyAd__Produ__06CD04F7">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="RecentyAdded" EntitySet="RecentyAddeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RecentyAd__Produ__4F7CD00D" Association="Self.FK__RecentyAd__Produ__4F7CD00D">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="RecentyAdded" EntitySet="RecentyAddeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WeeklyDis__Produ__08B54D69" Association="Self.FK__WeeklyDis__Produ__08B54D69">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="WeeklyDiscounts" EntitySet="WeeklyDiscounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WeeklyDis__Produ__5165187F" Association="Self.FK__WeeklyDis__Produ__5165187F">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="WeeklyDiscounts" EntitySet="WeeklyDiscounts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

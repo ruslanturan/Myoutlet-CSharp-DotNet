@@ -1,0 +1,34 @@
+﻿@using Myoutlet.ge.Models
+@model Add
+@{
+    ViewBag.Title = "Ახალი Რეკლამა";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">Ახალი Რეკლამა</div>
+                        <div class="card-body">
+                            <form class="register" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="text" id="Linkd" name="Linkd" class="form-control" placeholder="Add's Link" required="required" autofocus="autofocus">
+                                        <label for="Linkd">Რეკლამის Მისამართი</label>
+                                    </div>
+                                </div>
+                                <div class="form-group ad-img">
+                                    <input type="file" id="CompLogo" name="image" />
+                                    <ul class="img-list">
+                                        <li class="add-img" id="logo">
+                                            <i class="fas fa-camera text-center"></i>
+                                            <p class="text-center mt-3">Სურათის ატვირთვა</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary btn-block" id="ad" type="submit">Დამახსოვრება</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

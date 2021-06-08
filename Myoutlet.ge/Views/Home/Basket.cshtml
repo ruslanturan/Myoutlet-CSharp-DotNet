@@ -1,0 +1,81 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "კალათაში";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="post-details-area mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                    <div class="section-heading">
+                        <h5>კალათაში</h5>
+                    </div>
+                    @if (Model.Products.Count > 0)
+                    {
+                        foreach (var product in Model.Products)
+                        {
+                            <div class="row">
+                                <div class="single-featured-post col-4">
+                                    <div class="post-thumbnail">
+                                        <div class="listing">
+                                            <div class="listing_image">
+                                                <div class="listing_image_container">
+                                                    <a href="/home/product/@product.Id">
+                                                        <img class="img_size" src="~/Images/Product-images/@product.ProductUniqueNum/@product.Photo" alt="@product.Name">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="prop_location listing_location justify-content-start">
+                                            <center>
+                                                <a href="/home/product/@product.Id">@product.Name</a>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 d-flex" style="align-items:center;">
+                                    <button class="btn-success count decrease" disabled>-</button>
+                                    <p class="p-count" data-count="@product.productCount">1</p>
+                                    <button class="btn-success count increase">+</button>
+                                </div>
+                                <div class="col-4 d-flex" style="align-items:center">
+                                    <p class="p-count n-count">
+                                        <span class="item-count">1</span>
+                                        X
+                                        <span class="item-cost">@product.SaledCost</span> GEL
+                                        =
+                                        <span class="count-cost">@product.SaledCost</span> GEL
+                                    </p>
+                                </div>
+                                <div class="col-1 d-flex" style="align-items:center">
+                                    <button data-id="@product.Id" class="btn-danger btn removeFromBasket">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-12 col-md-8 mb-3 mt-5">
+                                <p class="p-count" style="font-size:25px">
+                                    <span>ჯამი:</span>
+                                    <span class="total"> 0.00</span>
+                                    <span> GEL</span>
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-4 mb-3" style="display:grid">
+                                <button class="btn-success btn " id="after_payment">განაგრძო გადახდა</button>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <p>კალათაში პროდუქტი არ არის.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

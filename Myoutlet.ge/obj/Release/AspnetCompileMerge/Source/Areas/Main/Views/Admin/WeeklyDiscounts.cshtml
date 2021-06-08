@@ -1,0 +1,75 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "Ყოველკვირეული Ფასდაკლებები";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+            <div class="container-fluid">
+                <div id="partners" class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        Პროდუქტები
+                        <p style="font-size:12px">
+                            (ყოველკვირეული ფასდაკლების სიაში უნდა დაამატოთ მინიმუმ 3, მაქსიმუმ 8 პროდუქტი. ჩამოთვლილ პროდუქტთა რაოდენობა - @Model.DiscountsList.Count)
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Სახელი</th>
+                                        <th>Კატეგორია</th>
+                                        <th>Ქვეკატეგორია</th>
+                                        <th>Კომპანიის სახელი</th>
+                                        <th id="stsBtn"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in Model.Products)
+                                    {
+                                    <tr>
+                                        <td>
+                                            <a href="/home/product/@product.Id">@product.Name</a>
+                                        </td>
+                                        <td>@product.Category.Name</td>
+                                        <td>@product.Kind.Name</td>
+                                        <td>
+                                            <a href="/home/partner/@product.Partner.Id">@product.Partner.CompanyName</a>
+                                        </td>
+                                        @if (Model.DiscountsList.Contains(product.Id))
+                                        {
+                                    <td>
+                                        <a href="/main/admin/AddWeeklyDiscount/@product.Id" class="btn btn-success disabled">Დამატება</a>
+                                        <a href="/main/admin/RemoveWeeklyDiscount/@product.Id" class="btn btn-primary prmry">Წაშლა</a>
+                                    </td>
+                                        }
+                                        else if (Model.DiscountsList.Count > 7)
+                                        {
+                                    <td>
+                                        <a href="/main/admin/AddWeeklyDiscount/@product.Id" class="btn btn-success disabled">Დამატება</a>
+                                        @if (Model.DiscountsList.Contains(product.Id))
+                                        {
+                                    <a href="/main/admin/RemoveWeeklyDiscount/@product.Id" class="btn btn-primary prmry">Წაშლა</a>
+                                        }
+                                        else
+                                        {
+                                    <a href="/main/admin/RemoveWeeklyDiscount/@product.Id" class="btn btn-primary disabled">Წაშლა</a>
+                                        }
+                                    </td>
+                                        }
+                                        else
+                                        {
+                                    <td>
+                                        <a href="/main/admin/AddWeeklyDiscount/@product.Id" class="btn btn-success sccss">Დამატება</a>
+                                        <a href="/main/admin/RemoveWeeklyDiscount/@product.Id" class="btn btn-primary disabled">Წაშლა</a>
+                                    </td>
+                                        }
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

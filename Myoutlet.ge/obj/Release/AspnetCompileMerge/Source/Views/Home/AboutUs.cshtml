@@ -1,0 +1,124 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "Ჩვენ Შესახებ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    @if (Model.Campaigns.Count > 0)
+    {
+        <div class="hero-area owl-carousel">
+            @foreach (var campaign in @Model.Campaigns)
+            {
+                <div class="hero-blog-post bg-img bg-overlay" style="background-image: url(/Images/Campaigns/@campaign.Link);background-size: contain;">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12">
+                                <div class="post-content text-center">
+                                    <div class="post-meta" data-animation="fadeInUp" data-delay="100ms">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    <div class="mag-breadcrumb py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/home/index">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Მთავარი
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Ჩვენ Შესახებ</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="post-details-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-8">
+                    <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                        <div class="blog-content">
+                            <h4 class="post-title">
+                                Ჩვენ Შესახებ
+                            </h4>
+                            @if (Model.info != null)
+                            {
+                                <p>@Model.info.Text</p>
+                                <div class="single-contact-info d-flex align-items-center mt-30">
+                                    <div class="icon mr-15">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>Ელ-ფოსტა:</p>
+                                        <h6>@Model.info.Mail</h6>
+                                    </div>
+                                </div>
+                                <div class="single-contact-info d-flex align-items-center">
+                                    <div class="icon mr-15">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>Ტელეფონი:</p>
+                                        <h6>(+995) @Model.info.MobilePhone</h6>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+                    <div class="sidebar-area bg-white mb-30 box-shadow">
+                        <div class="single-sidebar-widget p-30">
+                            <div class="social-followers-info">
+                                @if (Model.FbLink != null)
+                                {
+                                    <a href="//@Model.FbLink.Link" class="facebook-fans">
+                                        <i class="fa fa-facebook"></i>
+                                        <span>ფანი</span>
+                                    </a>
+                                }
+                                @if (Model.InstaLink != null)
+                                {
+                                    <a href="//@Model.InstaLink.Link" class="instagram">
+                                        <i class="fa fa-instagram"></i>
+                                        <span>მიმდევარი</span>
+                                    </a>
+                                }
+                                @if (Model.YoutubeLink != null)
+                                {
+                                    <a href="//@Model.YoutubeLink.Link" class="youtube-subscribers">
+                                        <i class="fa fa-youtube"></i>
+                                        <span>გამომწერი</span>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                        @if (Model.Adds.Count > 0)
+                        {
+                            <div class="single-sidebar-widget p-30">
+                                <div class="section-heading">
+                                    <h5>Რეკლამა</h5>
+                                </div>
+                                <div class="single-sidebar-widget">
+                                    <a href="//@Model.Adds[0].Linkd" class="add-img">
+                                        <img src="~/images/Adds/@Model.Adds[0].ImgName" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

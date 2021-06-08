@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{8882F29E-E61E-4472-B338-AD349EC608E9}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Myoutlet.ge/Controllers/HomeController.cs">
+    <Files>
+      <File FileName="Myoutlet.ge/Controllers/CreateOrderController.cs" Line="1" Column="1" />
+      <File FileName="Myoutlet.ge/Controllers/HomeController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Myoutlet.ge" expanded="True">
+            <Node name="Myoutlet.ge" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True">
+                <Node name="Model.edmx" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Myoutlet.ge PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

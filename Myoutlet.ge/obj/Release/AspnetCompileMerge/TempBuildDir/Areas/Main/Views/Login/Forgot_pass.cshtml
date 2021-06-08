@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Დაკარგული Პაროლი";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Დაკარგული Პაროლი</div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <h4>Დაგავიწყდათ პაროლი?</h4>
+                </div>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Შეიყვანეთ ელ-ფოსტა" autofocus="autofocus" required>
+                            <label for="inputEmail">Შეიყვანეთ ელ-ფოსტა</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" id="companyId" name="companyId" class="form-control" placeholder="Შეიყვანეთ კომპანიის საიდენტიფიკაციო ნომერი" required>
+                            <label for="companyId">Შეიყვანეთ კომპანიის საიდენტიფიკაციო ნომერი</label>
+                        </div>
+                    </div>
+                    @Html.ValidationMessage("Error", new { @class = "text-danger" })
+                <button class="btn btn-primary btn-block" type="submit">Პაროლის შეცვლა</button>
+                </form>
+                <div class="text-center">
+                    <a class="d-block small" href="/main/login/login">Გვერდზე შესვლა</a>
+                </div>
+            </div>
+        </div>

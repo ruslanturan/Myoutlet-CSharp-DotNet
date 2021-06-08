@@ -1,0 +1,51 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "მნიშვნელოვანი პარტნიორები";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+            <div class="container-fluid">
+                <div id="partners" class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table"></i>
+                        პარტნიორები
+                        <p style="font-size:12px">(ჩამოთვლილ პარტნიორთა რაოდენობა - @Model.DiscountsList.Count)</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>სახელი</th>
+                                        <th id="sts"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var partner in Model.Partners)
+                                    {
+                                    <tr>
+                                        <td>
+                                            <a href="/home/partner/@partner.Id">@partner.CompanyName</a>
+                                        </td>
+                                        @if (Model.DiscountsList.Contains(partner.Id))
+                                        {
+                                    <td>
+                                        <a href="/main/admin/AddValuablePartner/@partner.Id" class="btn btn-success disabled">დამატება</a>
+                                        <a href="/main/admin/RemoveValuablePartner/@partner.Id" class="btn btn-primary prmry">წაშლა</a>
+                                    </td>
+                                        }
+                                        else
+                                        {
+                                    <td>
+                                        <a href="/main/admin/AddValuablePartner/@partner.Id" class="btn btn-success sccss">დამატება</a>
+                                        <a href="/main/admin/RemoveValuablePartner/@partner.Id" class="btn btn-primary disabled">წაშლა</a>
+                                    </td>
+                                        }
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

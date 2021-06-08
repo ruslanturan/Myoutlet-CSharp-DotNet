@@ -1,0 +1,27 @@
+﻿@using Myoutlet.ge.Models
+@model Category
+@{
+    ViewBag.Title = "ახალი კატეგორიის დამატება";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">ახალი კატეგორია</div>
+                        <div class="card-body">
+                            <form class="register" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="text" id="Name" name="Name" class="form-control" placeholder="Კატეგორიის სახელი" required="required" autofocus="autofocus">
+                                        <label for="Name">კატეგორიის სახელი</label>
+                                    </div>
+                                </div>
+                                @Html.ValidationMessage("Error", new { @class = "text-danger" })
+                                <button class="btn btn-primary btn-block" type="submit">დამახსოვრება</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

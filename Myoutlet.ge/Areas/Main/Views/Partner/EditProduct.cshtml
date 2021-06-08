@@ -1,0 +1,141 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "პროდუქტის რედაქტირება";
+    Layout = "~/Views/Shared/_LayoutPartner.cshtml";
+}
+<head>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+tinymce.init({
+  selector: 'textarea#basic-example',
+  height: 500,
+  menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table paste code help wordcount'
+  ],
+  toolbar: 'undo redo | bold italic underline strikethrough | bullist numlist  | removeformat ',
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tiny.cloud/css/codepen.min.css'
+  ]
+});</script>
+</head>
+<div class="container-fluid">
+    <div class="container">
+        <div class="card card-register mx-auto mt-5 mb-5">
+            <div class="card-header">პროდუქტის რედაქტირება</div>
+            <div class="card-body">
+                <input type="hidden" id="ptId" value="@Model.Partner.Id" />
+                <form method="post" enctype="multipart/form-data" id="prdct">
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Product.Id)
+                    @Html.HiddenFor(m => m.Product.PartnerId)
+                    @Html.HiddenFor(m => m.Product.Photo)
+                    @Html.HiddenFor(m => m.Product.Views)
+                    @Html.HiddenFor(m => m.Product.SaleInPercent)
+                    @Html.TextBoxFor(m => m.Product.ProductUniqueNum, new { type = "hidden" })
+                    <div class="form-group">
+                        <label for="Category">კატეგორიის არჩევა</label>
+                        <div class="form-label-group">
+                            <select id="Category" name="Product.CategoryId" class="form-control">
+                                <option value="0">კატეგორია</option>
+                                @foreach (var ct in Model.Categories)
+                                {
+                                    if (Model.Product.CategoryId == ct.Id)
+                                    {
+                                        <option selected value="@ct.Id">@ct.Name</option>
+                                        continue;
+                                    }
+                                    <option value="@ct.Id">@ct.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Kind">ქვეკატეგორიის არჩევა</label>
+                        <div class="form-label-group">
+                            <select id="Kind" name="Product.KindId" class="form-control">
+                                @foreach (var knd in Model.Kinds)
+                                {
+                                    if (Model.Product.KindId == knd.Id)
+                                    {
+                                        <option selected value="@knd.Id">@knd.Name</option>
+                                        continue;
+                                    }
+                                    <option value="@knd.Id">@knd.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            @Html.TextBoxFor(m => m.Product.Name, new { type = "text", id = "Name", name = "Name", @class = "form-control", placeholder = "პროდუქტის სახელი" })
+                            <label for="Name">პროდუქტის სახელი</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            @Html.TextBoxFor(m => m.Product.productCount, new { type = "number", onkeydown = "javascript: return event.keyCode == 69 ? false : true", id = "productCount", name = "productCount", @class = "form-control", placeholder = "პროდუქტის რაოდენობა" })
+                            <label for="productCount">პროდუქტის რაოდენობა</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            @Html.TextBoxFor(m => m.Product.Cost, new { type = "number", onkeydown = "javascript: return event.keyCode == 69 ? false : true", id = "Cost", name = "Cost", @class = "form-control", placeholder = "პროდუქტის ღირებულება" })
+                            <label for="Cost">პროდუქტის ღირებულება</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            @Html.TextBoxFor(m => m.Product.SaledCost, new { type = "number", id = "Product_SaledCost", onkeydown = "javascript: return event.keyCode == 69 ? false : true", name = "SaledCost", @class = "form-control", placeholder = "ფასდაკლებული ფასი" })
+                            @Html.LabelFor(m => m.Product.SaledCost, "შეიტანეთ ფასდაკლებული ფასი, თუ პროდუქტს აქვს ფასდაკლება")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            @Html.TextBoxFor(m => m.Product.saleReason, new { type = "text", id = "saleReason", name = "saleReason", @class = "form-control", placeholder = "ფასდაკლების მიზეზი" })
+                            <label for="saleReason">ფასდაკლების მიზეზი</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            @Html.TextBoxFor(m => m.Product.amount_to_partner, new { type = "number", onkeydown = "javascript: return event.keyCode == 69 ? false : true", id = "amount_to_partner", name = "amount_to_partner", @class = "form-control", placeholder = "თანხის გადახდა პარტნიორისთვის" })
+                            <label for="amount_to_partner">თანხის გადახდა პარტნიორისთვის</label>
+                        </div>
+                    </div>
+                    <label class="ml-1" for="">დაამატე პროდუქტის აღწერა</label>
+                    @Html.TextAreaFor(m => m.description.Heading, new { id = "basic-example", name = "description", @class = "form-control" })
+                    @if (Model.Descriptions.Count < 0)
+                    {
+                        <textarea id="basic-example" name="description"></textarea>
+                    }
+                    <label class="ml-1" for="">სურათის დამატება პროდუქტისთვის</label>
+                    <p id="if">
+                        (ამ გვერდზე იქნება კარგი სურათების დახარისხება)
+                    </p>
+                    <div class="form-group ad-img">
+                        <input type="file" id="GalleryEdit" name="img" multiple />
+                        <ul class="img-list">
+                            @foreach (var img in Model.Galleries)
+                            {
+                                <li class="add-img img" data-name="@img.Link" style="background-image: url(/Images/Product-Images/@img.ProductUniqueNum/@img.Link)">
+                                    <div class="remove text-center" style="cursor: pointer;">x</div>
+                                </li>
+                            }
+                            <li class="add-img" id="addImgs">
+                                <i class="fas fa-camera text-center"></i>
+                                <p class="text-center">სურათის ატვირთვა</p>
+                                <p id="more" class="text-center">მაქს. 15 სურათი</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-success btn-block" id="editProduct" type="submit">შენახვა</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

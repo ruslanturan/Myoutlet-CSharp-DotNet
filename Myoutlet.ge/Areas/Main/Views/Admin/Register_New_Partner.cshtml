@@ -1,0 +1,58 @@
+﻿@using Myoutlet.ge.Models
+@model Partner
+@{
+    ViewBag.Title = "ახალი პარტნიორის დარეგისტრირება";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">ახალი პარტნიორის დარეგისტრირება</div>
+                        <div class="card-body">
+                            <form class="register" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-label-group">
+                                                <input type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" id="companyId" name="companyId" class="form-control" placeholder="კომპანიის ID" required="required" autofocus="autofocus">
+                                                <label for="companyId">კომპანიის ID</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-label-group">
+                                                <input type="text" id="companyName" name="companyName" class="form-control" placeholder="კომპანიის სახელი" required="required">
+                                                <label for="companyName">კომპანიის სახელი</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="email" id="email" name="email" class="form-control" placeholder="ელ-ფოსტა" required="required">
+                                        <label for="email">ელ-ფოსტა</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-label-group">
+                                                <input type="password" id="pass" name="pass" class="form-control" placeholder="პაროლი" required="required">
+                                                <label for="pass">პაროლი</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-label-group">
+                                                <input type="password" id="pass2" class="form-control" placeholder="დაადასტურეთ პაროლი" required="required">
+                                                <label for="pass2">დაადასტურეთ პაროლი</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="match" style="color:#dc3545;display:none;">პაროლები არ ემთხვევა.</p>
+                                <button class="btn btn-primary btn-block" type="submit">დარეგისტრირება</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

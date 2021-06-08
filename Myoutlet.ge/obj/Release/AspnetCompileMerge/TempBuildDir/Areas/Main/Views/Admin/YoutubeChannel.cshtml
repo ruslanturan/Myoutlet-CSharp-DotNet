@@ -1,0 +1,26 @@
+﻿@using Myoutlet.ge.Models
+@model YoutubeLink
+@{
+    ViewBag.Title = "Სოციალური Გვერდების Მისამართები";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">Youtube არხის მისამართი</div>
+                        <div class="card-body">
+                            <form class="register" method="post">
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(m => m.Id)
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        @Html.TextBoxFor(m => m.Link, new { type = "text", id = "Link", name = "Link", @class = "form-control", placeholder = "Youtube არხის მისამართი" })
+                                        @Html.LabelFor(m => m.Link, "Youtube არხის მისამართი")
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block" type="submit">Დამახსოვრება</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>

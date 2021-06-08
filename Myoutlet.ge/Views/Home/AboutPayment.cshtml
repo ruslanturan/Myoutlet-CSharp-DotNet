@@ -1,0 +1,126 @@
+﻿@using Myoutlet.ge.ViewModels
+@model ViewModel
+@{
+    ViewBag.Title = "გადახდის შესახებ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mag-breadcrumb py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/home/index">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                მთავარი
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">გადახდის შესახებ</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="post-details-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-8">
+                <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                    <div class="blog-content">
+                        <h4 class="post-title">
+                            გადახდის შესახებ
+                        </h4>
+                        <strong>ჩვენს საიტზე მოქმედებს ბარათით გადახდის სისტემა</strong>
+                        <p>ბარათით ანგარიშსწორება</p>
+                        <ul>
+                            <li style="color:black">
+                                • საიტზე (ბარათით გადახდა ონლაინ)
+                            </li>
+                            <li style="color:black">
+                                • მიწოდების ადგილზე იხდით მხოლოდ მიწოდების საფასურს
+                            </li>
+                        </ul>
+                        <p>
+                            ბარათით გადახდა ონლაინ რეჟიმში
+                        </p>
+                        <p>
+                            ანგარიშსწორებამდე აუცილებელია:
+                        </p>
+                        <ul>
+                            <li style="color:black">
+                                • შეკვეთის გაფორმებისას აირჩიეთ " ბარათით გადახდა ონლაინ" , რის შემდეგ თქვენ გადახვალთ ბარათით გადახდის გვერდზე , შესაბამისი ველების შევსების შემდეგ თქვენ ანგარიშსწორება შეგეძლებათ.
+                            </li>
+                            <li style="color:black">
+                                • ამის შემდეგ ჩვენი მენეჯერი დაგიკავშირდებათ, დაგიდასტურებთ გადახდას და პროდუქტის მიწოდების დეტალებს შეგითანხმებთ.
+                            </li>
+                        </ul>
+                        <a href="/home/aboutpayment" style="color:#0056b3">https://myoutlet.ge/home/aboutpayment</a>
+                        <div class="single-contact-info d-flex align-items-center mt-30">
+                            <div class="icon mr-15">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="text">
+                                <p>Ელ-ფოსტა:</p>
+                                <h6>@Model.info.Mail</h6>
+                            </div>
+                        </div>
+                        <div class="single-contact-info d-flex align-items-center">
+                            <div class="icon mr-15">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="text">
+                                <p>ტელეფონი:</p>
+                                <h6>@Model.info.MobilePhone</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+                <div class="sidebar-area bg-white mb-30 box-shadow">
+                    <div class="single-sidebar-widget p-30">
+                        <div class="social-followers-info">
+                            @if (Model.FbLink.Link != null)
+                            {
+                                <a href="//@Model.FbLink.Link" target="_blank" class="facebook-fans">
+                                    <i class="fa fa-facebook"></i>
+                                    <span>ფანი</span>
+                                </a>
+                            }
+                            @if (Model.InstaLink.Link != null)
+                            {
+                                <a href="//@Model.InstaLink.Link" target="_blank" class="instagram">
+                                    <i class="fa fa-instagram"></i>
+                                    <span>მიმდევარი</span>
+                                </a>
+                            }
+                            @if (Model.YoutubeLink.Link != null)
+                            {
+                                <a href="//@Model.YoutubeLink.Link" target="_blank" class="youtube-subscribers">
+                                    <i class="fa fa-youtube"></i>
+                                    <span>მიმდევარი</span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                    @if (Model.Adds.Count > 0)
+                    {
+                        <div class="single-sidebar-widget p-30">
+                            <div class="section-heading">
+                                <h5>Რეკლამა</h5>
+                            </div>
+                            <div class="single-sidebar-widget">
+                                <a href="//@Model.Adds[0].Linkd" target="_blank" class="add-img">
+                                    <img src="~/images/Adds/@Model.Adds[0].ImgName" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
